@@ -62,7 +62,7 @@
                 break;
             }
         }
-        return ($prime) ? true : false;
+        return $prime;
     }
 
     $text  = "Hej. Idag är det "; 
