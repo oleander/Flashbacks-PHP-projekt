@@ -40,8 +40,12 @@
 	$(function() {
 		$('#dialog').dialog({
 			autoOpen: false,
-			show: 'blind',
-			hide: 'explode'
+			show: 'fold',
+			hide: 'fold',
+			modal: true,
+			resizable: false,
+			draggable: false,
+			closeOnEscape: false
 		});
 		
 		$('#login').click(function() {
