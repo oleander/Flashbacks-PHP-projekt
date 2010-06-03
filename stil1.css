@@ -19,6 +19,10 @@ body, html {
 	height: 15%;
 }
 
+#menu {
+	width: 30%;
+}
+
 #menu ul {
 	list-style-type: none;
 	margin: 0;
@@ -37,4 +41,10 @@ body, html {
 #menu ul li a:hover {
 	text-decoration: underline;
 	color: red;
+}
+
+#time {
+	float: right;
+	padding: 1%;
+	text-align: right;
 }

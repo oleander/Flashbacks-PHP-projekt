@@ -38,7 +38,10 @@
 <div id="wrapper">
 	<div id="header">
 		<div id="menu">
-<?php include 'menu.php'; ?>
+			<?php include 'inc/menu.php'; ?>
+		</div>
+		<div id="time">
+			<?php include 'inc/time.php'; ?>
 		</div>
 	</div>
 	<div id="content">
@@ -56,15 +59,9 @@
         }
         return $prime;
     }
-
-    $text  = "Hej. Idag är det "; 
-    $text2 = "Tiden är "; 
-    $today = date('Y-m-d'); 
-    $time  = date("H:i:s"); 
-    $hemligSumma = array(10,20,30,40,50);
+	  
+	$hemligSumma = array(10,20,30,40,50);
     $slumpadSida = array('http://www.flashback.org','http://www.piratpartiet.se/','http://www.google.se','http://www.php.net');
-
-    echo $text . $today . "<br />" . $text2 . $time . "<br />" ;
     echo "Idag skall vi räkna matematik: ";
     
     if(isset($_POST['submit'])) 
