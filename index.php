@@ -46,7 +46,8 @@
 <html>  
 
 <head>  
-    <title><?php echo $cfg["titel"]; ?></title>  
+    <title><?php echo $cfg["titel"]; ?></title>
+	<link rel="stylesheet" href="stil1.css" type="text/css" />
 </head>  
 
 <body>  
