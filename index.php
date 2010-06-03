@@ -35,41 +35,7 @@
 	<link type="text/css" href="css/ui-lightness/jquery-ui-1.8.1.custom.css" rel="stylesheet" />
 	<script type="text/javascript" src="scripts/js/jquery-1.4.2.min.js"></script>
 	<script type="text/javascript" src="scripts/js/jquery-ui-1.8.1.custom.min.js"></script>
-	<script type="text/javascript">
-	$.fx.speeds._default = 1000;
-	$(function() {
-		$('#dialog').dialog({
-			autoOpen: false,
-			show: 'fold',
-			hide: 'fold',
-			modal: true,
-			resizable: false,
-			draggable: false,
-			closeOnEscape: false
-		});
-		
-		$('#login').click(function() {
-			$('#dialog').dialog('open');
-			return false;
-		});
-	});
-	var timer;
-	var seconds = 1; // how often should we refresh the DIV?
-
-	function startActivityRefresh() {
-    timer = setInterval(function() {
-			$('#time').load('inc/time.php');
-		}, seconds*1000)
-	}
-
-	function cancelActivityRefresh() {
-		clearInterval(timer);
-	}
-	
-      $(document).ready(function() {
-          $(function() {startActivityRefresh();});
-      });
-	</script>
+	<script type="text/javascript" src="scripts/js/javascript.js"></script>
 </head>  
 
 <body>
