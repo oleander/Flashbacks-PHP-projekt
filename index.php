@@ -33,7 +33,13 @@
 	<link rel="stylesheet" href="stil1.css" type="text/css" />
 </head>  
 
-<body>  
+<body>
+<div id="wrapper">
+<div id="header">
+<div id="menu">
+<? include 'menu.php'; ?>
+</div>
+</div>
 <?php   
     function isPrime($number)
     {
@@ -78,6 +84,7 @@
 <input type="text" name="ma2" /><br />
 <input type="submit" name="submit" value="Räkna" />
 </form>
+</div>
 </body>
 
 </html>
