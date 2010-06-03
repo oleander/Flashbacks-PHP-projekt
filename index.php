@@ -1,4 +1,3 @@
-
 <?php 
     /* Hantering av konfigurering */
 	
@@ -25,7 +24,6 @@
         }
     */
 ?>
-
 <html>  
 
 <head>  
