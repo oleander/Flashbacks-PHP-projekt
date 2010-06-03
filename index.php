@@ -38,14 +38,10 @@
 <div id="wrapper">
 	<div id="header">
 		<div id="menu">
-<<<<<<< HEAD
 			<?php include 'inc/menu.php'; ?>
 		</div>
 		<div id="time">
 			<?php include 'inc/time.php'; ?>
-=======
-<?php include 'inc/menu.php'; ?>
->>>>>>> 3f64644104c00aea6772fe5524c1d594638c4968
 		</div>
 	</div>
 	<div id="content">
