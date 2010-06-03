@@ -1,4 +1,4 @@
-<? 
+<?php 
 	$text  = "Hej. Idag är det "; 
     $text2 = "Tiden är "; 
     $today = date('Y-m-d'); 
