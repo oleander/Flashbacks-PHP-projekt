@@ -1,3 +1,4 @@
+
 <?php 
     /* Hantering av konfigurering */
     class Config {
