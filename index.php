@@ -1,24 +1,8 @@
+
 <?php 
     /* Hantering av konfigurering */
-    class Config {
-        private $values = array();
-        
-        public function Config() {
-            $this->set("run", true);
-        }
-        
-        public function set($name, $value) {
-            $this->values[$name] = $value;
-        }
-        
-        public function get($name) {
-            return $this->values[$name];
-        }
-        
-        public function get_all() {
-            return $this->values;
-        }
-    }
+	
+	require("inc/config.php");
     
     $GLOBALS["cfg"] = new Config();
     
@@ -27,7 +11,7 @@
     }
     
     /* Konfigueringar */
-    cfg() -> set("titel", "En Titel"); // En konfigurering 
+    cfg() -> set("titel", "FB-Community"); // En konfigurering 
     
     $cfg = cfg() -> get_all();
     
@@ -45,9 +29,10 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html>  
 
-<head>
-		<meta http-equiv="content-type" content="text/html; charset=utf-8">
-    <title><?php echo $cfg["titel"]; ?></title>  
+<head>  
+	<meta http-equiv="content-type" content="text/html; charset=utf-8">
+	<title><?php echo $cfg["titel"]; ?></title>
+	<link rel="stylesheet" href="stil1.css" type="text/css" />
 </head>  
 
 <body>  
