@@ -21,26 +21,33 @@ body, html {
 
 #menu {
 	width: 30%;
+	float: left;
 }
 
-#menu ul {
+#menu ul, #meta ul {
 	list-style-type: none;
 	margin: 0;
 	padding: 0;
 }
 
-#menu ul li {
+#menu ul li, #meta ul li {
 	display: inline;
 }
 
-#menu ul li a {
+#menu ul li a, #meta ul li a {
 	text-decoration: none;
 	color: black;
 }
 
-#menu ul li a:hover {
+#menu ul li a:hover, #meta ul li a:hover {
 	text-decoration: underline;
 	color: red;
+}
+
+#meta {
+	width: 70%;
+	float: left;
+	text-align: right;
 }
 
 #time {

@@ -78,6 +78,11 @@
 		<div id="menu">
 			<?php include 'inc/menu.php'; ?>
 		</div>
+		<div id="meta">
+			<ul>
+				<li><a href="#" id="login">Logga in</a></li>
+			</ul>
+		</div>
 		<div id="time">
 			<?php include 'inc/time.php'; ?>
 		</div>
@@ -90,7 +95,6 @@
 					<input type="submit" name="login_submit" value="Logga in"/>
 				</form>
 			</div>
-		<button id="login">Logga in</button>
 	</div>
 </div>
 </body>
