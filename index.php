@@ -31,14 +31,14 @@
 <head>  
 	<meta http-equiv="content-type" content="text/html; charset=utf-8">
 	<title><?php echo $cfg["titel"]; ?></title>
-	<link rel="stylesheet" href="stil1.css" type="text/css" />
+	<link rel="stylesheet" href="css/stil1.css" type="text/css" />
 </head>  
 
 <body>
 <div id="wrapper">
 <div id="header">
 <div id="menu">
-<?php include 'menu.php'; ?>
+<?php include 'inc/menu.php'; ?>
 </div>
 </div>
 <?php   
