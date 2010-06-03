@@ -1,35 +1,35 @@
 body, html {
-margin: 0px;
-padding: 0px;
-background: lightgrey;
-width: 100%;
-height: 100%;
+	margin: 0px;
+	padding: 0px;
+	background: lightgrey;
+	width: 100%;
+	height: 100%;
 }
 
 #wrapper {
-margin: 0px;
-width: 70%;
-height: 100%;
-margin-left: 15%;
-background: grey;
+	margin: 0px;
+	width: 70%;
+	height: 100%;
+	margin-left: 15%;
+	background: grey;
 }
 
 #menu ul {
-list-style-type: none;
-margin: 0;
-padding: 0;
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
 }
 
 #menu ul li {
-display: inline;
+	display: inline;
 }
 
 #menu ul li a {
-text-decoration: none;
-color: black;
+	text-decoration: none;
+	color: black;
 }
 
 #menu ul li a:hover {
-text-decoration: underline;
-color: red;
+	text-decoration: underline;
+	color: red;
 }
