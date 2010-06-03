@@ -32,6 +32,9 @@
 	<meta http-equiv="content-type" content="text/html; charset=utf-8">
 	<title><?php echo $cfg["titel"]; ?></title>
 	<link rel="stylesheet" href="css/stil1.css" type="text/css" />
+	<link type="text/css" href="css/ui-lightness/jquery-ui-1.8.1.custom.css" rel="stylesheet" />
+	<script type="text/javascript" src="scripts/js/jquery-1.4.2.min.js"></script>
+	<script type="text/javascript" src="scripts/js/jquery-ui-1.8.1.custom.min.js"></script>
 </head>  
 
 <body>
