@@ -36,11 +36,12 @@
 
 <body>
 <div id="wrapper">
-<div id="header">
-<div id="menu">
+	<div id="header">
+		<div id="menu">
 <?php include 'menu.php'; ?>
-</div>
-</div>
+		</div>
+	</div>
+	<div id="content">
 <?php   
     function isPrime($number)
     {
@@ -79,12 +80,17 @@
         echo (isPrime($summa)) ? $summa . ' är ett primtal<br/>' : $summa . ' är inte ett primtal<br/>';
     }
 ?>
-<form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
-<input type="text" name="ma1" /> +
-<input type="text" name="ma2" /><br />
-<input type="submit" name="submit" value="Räkna" />
-</form>
+		<form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
+		<input type="text" name="ma1" /> +
+		<input type="text" name="ma2" /><br />
+		<input type="submit" name="submit" value="Räkna" />
+		</form>
+		<form action="login.php" method="post">
+			<label for="username">Anv.namn: </label><input type="text" name="username" /><br />
+			<label for="password">Lösenord: </label><input type="text" name="password" /><br />
+			<input type="submit" name="login_submit" value="Logga in"/>
+		</form>
+	</div>
 </div>
 </body>
-
 </html>
