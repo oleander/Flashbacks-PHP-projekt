@@ -53,6 +53,22 @@
 			return false;
 		});
 	});
+	var timer;
+	var seconds = 1; // how often should we refresh the DIV?
+
+	function startActivityRefresh() {
+    timer = setInterval(function() {
+			$('#time').load('inc/time.php');
+		}, seconds*1000)
+	}
+
+	function cancelActivityRefresh() {
+		clearInterval(timer);
+	}
+	
+      $(document).ready(function() {
+          $(function() {startActivityRefresh();});
+      });
 	</script>
 </head>  
 
