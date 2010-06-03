@@ -38,7 +38,7 @@
 <div id="wrapper">
 <div id="header">
 <div id="menu">
-<? include 'menu.php'; ?>
+<?php include 'menu.php'; ?>
 </div>
 </div>
 <?php   

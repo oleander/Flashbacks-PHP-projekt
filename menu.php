@@ -1,7 +1,7 @@
 <?php
 
 //Hämtar filnamn till aktuell sida
-$current_file= basename($_SERVER['PHP_SELF']);
+$current_file = basename($_SERVER['PHP_SELF']);
 
 //Olika alternativen
 $meny1_namn = 'Home';
@@ -22,7 +22,7 @@ $meny5_url = 'about.php';
 //Själva menyn.
 echo "<ul>";
 // MENY 1
-echo'<li><a href="'.$meny1_url.'"';
+echo '<li><a href="'.$meny1_url.'"';
 if ($current_file == basename($meny1_url)) {echo 'id="current"';}
 echo '>'.$meny1_namn.'</a>';
 echo '</li> | ';
@@ -37,12 +37,12 @@ if ($current_file == basename($meny3_url)) {echo 'id="current"';}
 echo '>'.$meny3_namn.'</a>';
 echo '</li> | ';
 // MENY 4
-echo'<li><a href="'.$meny4_url.'"';
+echo '<li><a href="'.$meny4_url.'"';
 if ($current_file == basename($meny4_url)) {echo 'id="current"';}
 echo '>'.$meny4_namn.'</a>';
 echo '</li> | ';
 // MENY 5
-echo'<li><a href="'.$meny5_url.'"';
+echo '<li><a href="'.$meny5_url.'"';
 if ($current_file == basename($meny5_url)) {echo 'id="current"';}
 echo '>'.$meny5_namn.'</a>';
 echo '</li>';
