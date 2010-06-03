@@ -35,6 +35,21 @@
 	<link type="text/css" href="css/ui-lightness/jquery-ui-1.8.1.custom.css" rel="stylesheet" />
 	<script type="text/javascript" src="scripts/js/jquery-1.4.2.min.js"></script>
 	<script type="text/javascript" src="scripts/js/jquery-ui-1.8.1.custom.min.js"></script>
+	<script type="text/javascript">
+	$.fx.speeds._default = 1000;
+	$(function() {
+		$('#dialog').dialog({
+			autoOpen: false,
+			show: 'blind',
+			hide: 'explode'
+		});
+		
+		$('#login').click(function() {
+			$('#dialog').dialog('open');
+			return false;
+		});
+	});
+	</script>
 </head>  
 
 <body>
@@ -85,11 +100,14 @@
 		<input type="text" name="ma2" /><br />
 		<input type="submit" name="submit" value="Räkna" />
 		</form>
-		<form action="login.php" method="post">
-			<label for="username">Anv.namn: </label><input type="text" name="username" /><br />
-			<label for="password">Lösenord: </label><input type="text" name="password" /><br />
-			<input type="submit" name="login_submit" value="Logga in"/>
-		</form>
+			<div id="dialog" title="Logga in">
+				<form action="login.php" method="post">
+					<label for="username">Anv.namn: </label><input type="text" name="username" /><br />
+					<label for="password">Lösenord: </label><input type="text" name="password" /><br />
+					<input type="submit" name="login_submit" value="Logga in"/>
+				</form>
+			</div>
+		<button id="login">Logga in</button>
 	</div>
 </div>
 </body>
