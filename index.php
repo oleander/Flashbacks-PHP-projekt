@@ -1,4 +1,3 @@
-
 <?php 
     /* Hantering av konfigurering */
 	
