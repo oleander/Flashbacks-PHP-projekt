@@ -41,10 +41,12 @@
         }
     */
 ?>
-
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html>  
 
-<head>  
+<head>
+		<meta http-equiv="content-type" content="text/html; charset=utf-8">
     <title><?php echo $cfg["titel"]; ?></title>  
 </head>  
 
@@ -59,7 +61,6 @@
             if(($number % $i) == 0 && $i != $number)
             {
                 $prime = false;
-                break;
             }
         }
         return $prime;
@@ -70,7 +71,7 @@
     $today = date('Y-m-d'); 
     $time  = date("H:i:s"); 
     $hemligSumma = array(10,20,30,40,50);
-    $slumpadSida = array('www.flashback.org','http://www.piratpartiet.se/','www.google.se','www.php.net');
+    $slumpadSida = array('http://www.flashback.org','http://www.piratpartiet.se/','http://www.google.se','http://www.php.net');
 
     echo $text . $today . "<br />" . $text2 . $time . "<br />" ;
     echo "Idag skall vi räkna matematik: ";
@@ -82,7 +83,7 @@
     
         if($summa == $hemligSumma[mt_rand(0,4)])
         {
-            echo "Du lyckades hitta det hemliga nummret du får en länk <br />". $slumpadSida[mt_rand(0,3)];
+            echo "Du lyckades hitta det hemliga nummret du får en länk <br />". $slumpadSida[mt_rand(0,3)] ."<br />\n";
         }
         
         echo (isPrime($summa)) ? $summa . ' är ett primtal<br/>' : $summa . ' är inte ett primtal<br/>';
