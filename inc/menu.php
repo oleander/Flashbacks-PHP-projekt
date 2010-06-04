@@ -3,7 +3,7 @@
 //Hämtar filnamn till aktuell sida
 $current_file = basename($_SERVER['PHP_SELF']);
 
-//Menyn, innehåller "Namn" => "Adress"
+//Menyn, innehåller "Namn" => "Adress" och visas i ordningen de är skrivna i
 $menu = array(
 	'Hem' => 'index.php',
 	'Vänner' => 'friends.php',
