@@ -16,9 +16,6 @@ $meny3_url = 'news.php';
 $meny4_namn = 'Inställningar';
 $meny4_url = 'settings.php';
 
-$meny5_namn = 'Om Oss';
-$meny5_url = 'about.php';
-
 //Själva menyn.
 echo "<ul>";
 // MENY 1
@@ -41,11 +38,6 @@ echo '<li><a href="'.$meny4_url.'"';
 if ($current_file == basename($meny4_url)) {echo 'id="current"';}
 echo '>'.$meny4_namn.'</a>';
 echo '</li> | ';
-// MENY 5
-echo '<li><a href="'.$meny5_url.'"';
-if ($current_file == basename($meny5_url)) {echo 'id="current"';}
-echo '>'.$meny5_namn.'</a>';
-echo '</li>';
 //Slut
 echo "</ul>";
 ?>
