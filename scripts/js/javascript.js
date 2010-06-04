@@ -1,4 +1,4 @@
-	$.fx.speeds._default = 1000;
+	$.fx.speeds._default = 250;
 	$(function() {
 		$('#loginDialog').dialog({
 			autoOpen: false,
