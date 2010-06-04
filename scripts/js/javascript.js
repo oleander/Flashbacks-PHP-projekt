@@ -26,6 +26,7 @@
 		});
 		
 		$("#register").click(function() {
+			$("#loginDialog").dialog('close');
 			$("#registerDialog").dialog('open');
 			return false;
 		});
