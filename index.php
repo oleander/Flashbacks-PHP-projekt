@@ -57,14 +57,14 @@
 	<div id="content">
 			<div id="loginDialog" title="Logga in">
 				<form action="login.php" method="post">
-					<label for="username">Anv.namn: </label><input type="text" name="username" id="username"/><br />
+					<label for="username">Användarnamn: </label><input type="text" name="username" id="username"/><br />
 					<label for="password">Lösenord: </label><input type="text" name="password" id="password"/><br />
 					<input type="submit" name="login_submit" value="Logga in"/>
 				</form>
 			</div>
 			<div id="registerDialog" title="Registrera dig">
 				<form action="login.php" method="post">
-					<label for="username">Anv.namn: </label><input type="text" name="username" id="username"/><br />
+					<label for="username">Användarnamn: </label><input type="text" name="username" id="username"/><br />
 					<label for="password">Lösenord (x2): </label><input type="password" name="password" id="password"/><br />
 					<input type="password" name="password_again" id="password_again" /><br />
 					<label for="email">E-post: </label><br /><input type="text" name="email" id="email" /><br />
