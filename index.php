@@ -56,8 +56,8 @@
 	<div id="content">
 			<div id="dialog" title="Logga in">
 				<form action="login.php" method="post">
-					<label for="username">Anv.namn: </label><input type="text" name="username" /><br />
-					<label for="password">Lösenord: </label><input type="text" name="password" /><br />
+					<label for="username">Anv.namn: </label><input type="text" name="username" id="username"/><br />
+					<label for="password">Lösenord: </label><input type="text" name="password" id="password"/><br />
 					<input type="submit" name="login_submit" value="Logga in"/>
 				</form>
 			</div>
