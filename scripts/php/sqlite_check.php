@@ -1,6 +1,6 @@
 <?php
 
-$dbname='base';
+$dbname='base.db';
 $base=new SQLiteDatabase($dbname, 0666, $err);
 if ($err)
 { 
