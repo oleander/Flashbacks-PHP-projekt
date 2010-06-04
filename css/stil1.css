@@ -21,7 +21,7 @@ body, html {
 }
 
 #menu {
-	width: 30%;
+	width: 50%;
 	float: left;
 	margin-top: 3%;
 	margin-left: 1%;
@@ -53,8 +53,8 @@ body, html {
 	text-align: right;
 }
 
-#time {
+/*#time {
 	float: right;
 	padding: 1%;
 	text-align: right;
-}
+}*/

@@ -49,9 +49,9 @@
 				<li><a href="#" id="login">Logga in</a></li>
 			</ul>
 		</div>
-		<div id="time">
+		<!--<div id="time">
 			<?php include 'inc/time.php'; ?>
-		</div>
+		</div>-->
 	</div>
 	<div id="content">
 			<div id="dialog" title="Logga in">

@@ -4,19 +4,19 @@
 $current_file = basename($_SERVER['PHP_SELF']);
 
 //Olika alternativen
-$meny1_namn = 'Home';
+$meny1_namn = 'Hem';
 $meny1_url = 'index.php';
 
-$meny2_namn = 'Friends';
+$meny2_namn = 'Vänner';
 $meny2_url = 'friends.php';
 
-$meny3_namn = 'News';
+$meny3_namn = 'Nyheter';
 $meny3_url = 'news.php';
 
-$meny4_namn = 'Settings';
+$meny4_namn = 'Inställningar';
 $meny4_url = 'settings.php';
 
-$meny5_namn = 'About';
+$meny5_namn = 'Om Oss';
 $meny5_url = 'about.php';
 
 //Själva menyn.

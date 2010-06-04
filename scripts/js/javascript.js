@@ -15,7 +15,7 @@
 			return false;
 		});
 	});
-	var timer;
+/*	var timer;
 	var seconds = 1; // how often should we refresh the DIV?
 
 	function startActivityRefresh() {
@@ -30,4 +30,4 @@
 	
       $(document).ready(function() {
           $(function() {startActivityRefresh();});
-      });
+      });*/
