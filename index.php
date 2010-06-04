@@ -26,10 +26,10 @@
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html>  
+<html xmlns="http://www.w3.org/1999/xhtml">  
 
 <head>  
-	<meta http-equiv="content-type" content="text/html; charset=utf-8">
+	<meta http-equiv="content-type" content="text/html; charset=utf-8"/>
 	<title><?php echo $cfg["titel"]; ?></title>
 	<link rel="stylesheet" href="css/stil1.css" type="text/css" />
 	<link type="text/css" href="css/ui-lightness/jquery-ui-1.8.1.custom.css" rel="stylesheet" />

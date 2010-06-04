@@ -25,6 +25,7 @@ body, html {
 	width: 40%;
 	float: left;
 	margin-left: 10%;
+	word-spacing: 15px;
 }
 
 #meta {
