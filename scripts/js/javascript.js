@@ -1,6 +1,6 @@
 	$.fx.speeds._default = 1000;
 	$(function() {
-		$('#dialog').dialog({
+		$('#loginDialog').dialog({
 			autoOpen: false,
 			show: 'fold',
 			hide: 'fold',
@@ -11,7 +11,22 @@
 		});
 		
 		$('#login').click(function() {
-			$('#dialog').dialog('open');
+			$('#loginDialog').dialog('open');
+			return false;
+		});
+		
+		$("#registerDialog").dialog({
+			autoOpen: false,
+			show: 'fold',
+			hide: 'fold',
+			modal: true,
+			resizable: false,
+			draggable: false,
+			closeOnEscape: false
+		});
+		
+		$("#register").click(function() {
+			$("#registerDialog").dialog('open');
 			return false;
 		});
 	});

@@ -47,6 +47,7 @@
 		<div id="meta">
 			<ul>
 				<li><a href="#" id="login">Logga in</a></li>
+				<li><a href="#" id="register">Registrera</a></li>
 			</ul>
 		</div>
 		<!--<div id="time">
@@ -54,11 +55,20 @@
 		</div>-->
 	</div>
 	<div id="content">
-			<div id="dialog" title="Logga in">
+			<div id="loginDialog" title="Logga in">
 				<form action="login.php" method="post">
 					<label for="username">Anv.namn: </label><input type="text" name="username" id="username"/><br />
 					<label for="password">Lösenord: </label><input type="text" name="password" id="password"/><br />
 					<input type="submit" name="login_submit" value="Logga in"/>
+				</form>
+			</div>
+			<div id="registerDialog" title="Registrera dig">
+				<form action="login.php" method="post">
+					<label for="username">Anv.namn: </label><input type="text" name="username" id="username"/><br />
+					<label for="password">Lösenord (x2): </label><input type="password" name="password" id="password"/><br />
+					<input type="password" name="password_again" id="password_again" /><br />
+					<label for="email">E-post: </label><br /><input type="text" name="email" id="email" /><br />
+					<input type="submit" name="register_submit" value="Registrera"/>
 				</form>
 			</div>
 	</div>
