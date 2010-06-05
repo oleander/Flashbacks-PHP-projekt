@@ -33,7 +33,7 @@
 	<title><?php echo $cfg["titel"]; ?></title>
 	<link rel="alternate" type="application/rss+xml" href="/inc/feed.xml" title="Flashback Community News Feed" />
 	<link rel="stylesheet" href="css/stil1.css" type="text/css" />
-	<link type="text/css" href="css/humanity/jquery-ui-1.8.1.custom.css" rel="stylesheet" />
+	<link type="text/css" href="css/humanity/jquery-ui-1.8.2.custom.css" rel="stylesheet" />
 	<script type="text/javascript" src="scripts/js/jquery-1.4.2.min.js"></script>
 	<script type="text/javascript" src="scripts/js/jquery-ui-1.8.1.custom.min.js"></script>
 	<script type="text/javascript" src="scripts/js/javascript.js"></script>
