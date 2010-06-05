@@ -51,6 +51,7 @@
 		$("#accor").accordion({
 			autoHeight: false,
 			navigation: true,
-			active: false
+			active: false,
+			icons: false,
 		});
 	});
