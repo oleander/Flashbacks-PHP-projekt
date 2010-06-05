@@ -47,3 +47,10 @@
       $(document).ready(function() {
           $(function() {startActivityRefresh();});
       });*/
+	$(function() {
+		$("#accor").accordion({
+			autoHeight: false,
+			navigation: true,
+			active: false
+		});
+	});
