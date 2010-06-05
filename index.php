@@ -63,7 +63,7 @@
 				</form>
 			</div>
 			<div id="registerDialog" title="Registrera dig">
-				<form action="login.php" method="post">
+				<form action="register.php" method="post">
 					<label for="username">Användarnamn: </label><input type="text" name="username" id="username"/><br />
 					<label for="password">Lösenord (x2): </label><input type="password" name="password" id="password"/><br />
 					<input type="password" name="password_again" id="password_again" /><br />
