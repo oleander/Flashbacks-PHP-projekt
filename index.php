@@ -1,4 +1,5 @@
-<?php 
+<?php
+session_start();
     /* Hantering av konfigurering */
 	
 	require("inc/config.php");
@@ -44,7 +45,7 @@
 	<div id="header">
 		<div id="menu">
 			<?php
-				if (isset($_COOKIE["user"]))
+				if (isset($_SESSION['logged_in']))
 					include 'inc/menu.php';
 				else
 					echo "Logga in för att se menyn";
@@ -53,7 +54,7 @@
 		<div id="meta">
 			<ul>
 				<?php
-				if (isset($_COOKIE["user"]))
+				if (isset($_SESSION['logged_in']))
 					echo "<li><a href='scripts/php/logout.php'>Logga ut</a></li>";
 				else
 					echo "<li><a href='#' id='login'>Logga in</a></li>";

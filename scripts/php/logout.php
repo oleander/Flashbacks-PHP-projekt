@@ -1,4 +1,8 @@
 <?php
-	setcookie("user", '', time()-3600, '/');
-	header('Location: http://localhost/');
+session_start();
+foreach(array_keys($_SESSION) as $key)
+{
+	unset($_SESSION[$key]);
+}
+header('Location: http://localhost/');
 ?>

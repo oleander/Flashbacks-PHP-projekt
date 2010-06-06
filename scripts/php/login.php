@@ -1,4 +1,5 @@
 <?php
+session_start();
 include "/../../inc/mysql_config.php";
 
 $result = mysql_query("SELECT * FROM users WHERE username = '$_POST[username]' AND password = '$_POST[password]'");
@@ -10,12 +11,12 @@ if (mysql_num_rows($result) == 0)
 }
 else
 {
-	setcookie("user", $_POST['username'], time()+3600, '/');
+	while($row = mysql_fetch_array($result))
+	{
+		$_SESSION['userID'] = $row['id'];
+		$_SESSION['username'] = $row['username'];
+		$_SESSION['logged_in'] = true;
+	}
 	header('Location: http://localhost/');
 }
-	
-/*while($row = mysql_fetch_array($result))
-{
-	echo "<p><b>".$row['username']."</b> with password: <b>".$row['password']."</b> and email: <b>".$row['email']."</b></p>\n";
-}*/
 ?>
