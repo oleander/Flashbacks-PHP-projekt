@@ -52,7 +52,12 @@
 		</div>
 		<div id="meta">
 			<ul>
-				<li><a href="#" id="login">Logga in</a></li>
+				<?php
+				if (isset($_COOKIE["user"]))
+					echo "<li><a href='scripts/php/logout.php'>Logga ut</a></li>";
+				else
+					echo "<li><a href='#' id='login'>Logga in</a></li>";
+				?>
 			</ul>
 		</div>
 		<!--<div id="time">
@@ -63,13 +68,13 @@
 			<div id="loginDialog" title="Logga in">
 				<form action="scripts/php/login.php" method="post">
 					<label for="username">Användarnamn: </label><input type="text" name="username" id="username"/><br />
-					<label for="password">Lösenord: </label><input type="text" name="password" id="password"/><br />
+					<label for="password">Lösenord: </label><input type="password" name="password" id="password"/><br />
 					<input type="submit" name="login_submit" value="Logga in"/>
 					<p>Har du inget konto? <a href="#" id="register">Registrera dig</a></p>
 				</form>
 			</div>
 			<div id="registerDialog" title="Registrera dig">
-				<form action="register.php" method="post">
+				<form action="scripts/php/register.php" method="post">
 					<label for="username">Användarnamn: </label><input type="text" name="username" id="username"/><br />
 					<label for="password">Lösenord (x2): </label><input type="password" name="password" id="password"/><br />
 					<input type="password" name="password_again" id="password_again" /><br />

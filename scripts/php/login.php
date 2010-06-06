@@ -1,15 +1,21 @@
 <?php
-$database = new SQLite3("../../fb.db");
-$username = $_POST['username'];
-$password = $_POST['password'];
-$results = $db->query("SELECT * FROM users WHERE username='$username' AND password='$password'");
+include "/../../inc/mysql_config.php";
 
-if($result = $database->query($query, SQLITE_BOTH, $error))
-{ 
-	echo "Olycka!";
+$result = mysql_query("SELECT * FROM users WHERE username = '$_POST[username]' AND password = '$_POST[password]'");
+
+
+if (mysql_num_rows($result) == 0)
+{
+	echo "olycka";
 }
 else
 {
-	echo "Lycka!";
+	setcookie("user", $_POST['username'], time()+3600, '/');
+	header('Location: http://localhost/');
 }
+	
+/*while($row = mysql_fetch_array($result))
+{
+	echo "<p><b>".$row['username']."</b> with password: <b>".$row['password']."</b> and email: <b>".$row['email']."</b></p>\n";
+}*/
 ?>
