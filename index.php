@@ -83,6 +83,10 @@ session_start();
 					<input type="submit" name="register_submit" value="Registrera"/>
 				</form>
 			</div>
+			<div id="intro">
+			<h2>Välkommen till Flashbacks egna community</h2>
+			<p>Här kan du uppleva yttrandefriheten som finns på Flashback forum fast under mindre stränga omständigheter</p>
+			</div>
 			<div id="news">
 				<?php include 'scripts/php/get_news.php'; ?>
 			</div>

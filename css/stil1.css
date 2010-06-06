@@ -12,6 +12,8 @@ body, html {
 	height: 100%;
 	margin-left: 15%;
 	background: #57470C;
+	-moz-box-shadow: 0px 0px 10px #000;
+	-webkit-box-shadow: 0px 0px 10px #000;
 }
 
 #header {
@@ -19,6 +21,13 @@ body, html {
 	height: 15%;
 	background: #968148;
 	border-bottom: 1px solid black;
+}
+
+#intro {
+	margin-left: 9%;
+	width: 60%;
+	float: left;
+	color: #C9C9B1;
 }
 
 #menu {
@@ -35,7 +44,7 @@ body, html {
 }
 
 #meta, #menu {
-margin-top: 7%;
+	margin-top: 7%;
 }
 
 #menu ul, #meta ul {
@@ -77,7 +86,7 @@ margin-top: 7%;
 #news {
 	width: 25%;
 	float: right;
-	margin: 1em; 
+	margin: 1em;
 	padding: 0.5em;
 	font-size: 60%;
 }
