@@ -33,7 +33,7 @@
 	<title><?php echo $cfg["titel"]; ?></title>
 	<link rel="alternate" type="application/rss+xml" href="/inc/feed.xml" title="Flashback Community News Feed" />
 	<link rel="stylesheet" href="css/stil1.css" type="text/css" />
-	<link type="text/css" href="css/humanity/jquery-ui-1.8.2.custom.css" rel="stylesheet" />
+	<link type="text/css" href="css/ui-lightness/jquery-ui-1.8.1.custom.css" rel="stylesheet" />
 	<script type="text/javascript" src="scripts/js/jquery-1.4.2.min.js"></script>
 	<script type="text/javascript" src="scripts/js/jquery-ui-1.8.1.custom.min.js"></script>
 	<script type="text/javascript" src="scripts/js/javascript.js"></script>
@@ -43,7 +43,12 @@
 <div id="wrapper">
 	<div id="header">
 		<div id="menu">
-			<?php include 'inc/menu.php'; ?>
+			<?php
+				if (isset($_COOKIE["user"]))
+					include 'inc/menu.php';
+				else
+					echo "";
+			?>
 		</div>
 		<div id="meta">
 			<ul>
@@ -56,7 +61,7 @@
 	</div>
 	<div id="content">
 			<div id="loginDialog" title="Logga in">
-				<form action="login.php" method="post">
+				<form action="scripts/php/login.php" method="post">
 					<label for="username">Användarnamn: </label><input type="text" name="username" id="username"/><br />
 					<label for="password">Lösenord: </label><input type="text" name="password" id="password"/><br />
 					<input type="submit" name="login_submit" value="Logga in"/>
