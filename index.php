@@ -47,7 +47,7 @@
 				if (isset($_COOKIE["user"]))
 					include 'inc/menu.php';
 				else
-					echo "";
+					echo "Logga in för att se menyn";
 			?>
 		</div>
 		<div id="meta">

@@ -2,5 +2,5 @@
 <rss version='2.0'>
 <channel>
   <title>Flashback Community News Feed</title>
-  <link>http://localhost</link>  <description>Flashbacks egna community</description>  <item>    <title>Andra nyheten</title>    <link>http://localhost</link>    <description>Testar att göra en andra nyhet.</description>  </item>  <item>    <title>Först nyheten</title>    <link>http://localhost</link>    <description>Detta är första nyheten som finns på sidan.</description>  </item></channel>
+  <link>http://localhost</link>  <description>Flashbacks egna community</description>  <item>    <title>Första nyheten</title>    <link>http://localhost</link>    <description>Detta är första nyheten.</description>  </item></channel>
 </rss>

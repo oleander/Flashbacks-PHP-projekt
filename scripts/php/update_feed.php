@@ -13,9 +13,11 @@ $stringData = "  <link>http://localhost</link>";
 fwrite($fh, $stringData);
 $stringData = "  <description>Flashbacks egna community</description>";
 fwrite($fh, $stringData);
-$db = new SQLite3("../../fb.db");
-$results = $db->query("SELECT * FROM news order by id desc");
-while($row = $results->fetchArray())
+include "/../../inc/mysql_config.php";
+
+$result = mysql_query("SELECT * FROM news ORDER BY id desc LIMIT 0,5");
+
+while($row = mysql_fetch_array($result))
 {
 $stringData = "  <item>";
 fwrite($fh, $stringData);

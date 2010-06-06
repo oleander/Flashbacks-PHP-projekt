@@ -1,9 +1,11 @@
 <?php
-$db = new SQLite3("fb.db");
-$results = $db->query("SELECT * FROM news ORDER BY id desc LIMIT 0,5");
+include "/../../inc/mysql_config.php";
+
+$result = mysql_query("SELECT * FROM news ORDER BY id desc LIMIT 0,5");
+
 echo "<h2><a href='news.php'>Nyheter:</a></h2>";
 echo "<div id='accor'>";
-while($row = $results->fetchArray())
+while($row = mysql_fetch_array($result))
 {
 	echo "<h3><a href='#'>".$row['title']."</a></h3>\n";
 	echo "<div>";
