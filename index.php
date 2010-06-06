@@ -85,7 +85,9 @@ session_start();
 			</div>
 			<div id="intro">
 			<h2>Välkommen till Flashbacks egna community</h2>
-			<p>Här kan du uppleva yttrandefriheten som finns på Flashback forum fast under mindre stränga omständigheter</p>
+			<p>Här kan du uppleva yttrandefriheten som finns på Flashback forum fast på en mera community-baserad plattform.</p>
+			<p>Du blir tilldelad en egen profil som du kan skräddarsy för att spegla din personlighet och åsikter.</p>
+			<p>Det finns även olika mötesplatser på sidan för att olika medlemmar ska kunna träffas och kommunicera med varandra.</p>
 			</div>
 			<div id="news">
 				<?php include 'scripts/php/get_news.php'; ?>
