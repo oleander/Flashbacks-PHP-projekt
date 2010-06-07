@@ -8,10 +8,10 @@ if(isset($_POST['username']) && strlen($_POST['username']) > 0 && isset($_POST['
 	$password = mysql_real_escape_string($_POST['password']);
 	$password_again = mysql_real_escape_string($_POST['password_again']);
 	$email = mysql_real_escape_string($_POST['email']);
-	$result = mysql_query("SELECT COUNT(username) FROM users WHERE username = '". $username . "'");
+	$result = mysql_query("SELECT COUNT(username) FROM users WHERE username = '". $username . "' LIMIT 0, 1");
 
 
-	if (mysql_result($result, 0) > 0)
+	if (mysql_result($result, 0) == 1)
 	{
 		echo "Det finns redan en användare med det användarnamnet";
 	}

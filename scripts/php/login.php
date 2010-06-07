@@ -6,7 +6,7 @@ if(isset($_POST['username']) && strlen($_POST['username']) > 0 && isset($_POST['
 	//Tar bort farliga tecken från sql-frågan för att förhindra sql-injections
 	$username = mysql_real_escape_string($_POST['username']);
 	$password = mysql_real_escape_string($_POST['password']);
-	$result = mysql_query("SELECT * FROM users WHERE username = '" . $username . "' AND password = '" . $password . "'");
+	$result = mysql_query("SELECT * FROM users WHERE username = '" . $username . "' AND password = '" . $password . "' LIMIT 0, 1");
 
 
 	if (mysql_num_rows($result) == 0)
