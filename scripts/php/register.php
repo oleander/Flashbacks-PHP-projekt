@@ -1,27 +1,37 @@
 <?php
 session_start();
-include "/../../inc/mysql_config.php";
-
-$result = mysql_query("SELECT * FROM users WHERE username = '$_POST[username]'");
-
-
-if (mysql_num_rows($result) == 1)
+if(isset($_POST['username']) && strlen($_POST['username']) > 0 && isset($_POST['password']) && strlen($_POST['password']) > 0 
+	&& isset($_POST['email']) && strlen($_POST['email']) > 0 && isset($_POST['password_again']) && strlen($_POST['password_again']) > 0)
 {
-	echo "Det finns redan en användare med det användarnamnet";
-}
-else
-{
-	if ($_POST['password'] == $_POST['password_again'])
+	include "/../../inc/mysql_config.php";
+	$username = mysql_real_escape_string($_POST['username']);
+	$password = mysql_real_escape_string($_POST['password']);
+	$password_again = mysql_real_escape_string($_POST['password_again']);
+	$email = mysql_real_escape_string($_POST['email']);
+	$result = mysql_query("SELECT COUNT(username) FROM users WHERE username = '". $username . "'");
+
+
+	if (mysql_result($result, 0) > 0)
 	{
-		mysql_query("INSERT INTO users (username, password, email) VALUES ('$_POST[username]', '$_POST[password]', '$_POST[email]')");
-		$_SESSION['userID'] = $_POST['username'];
-		$_SESSION['username'] = $_POST['password'];
-		$_SESSION['logged_in'] = true;
-		header('Location: ../../index.php');
+		echo "Det finns redan en användare med det användarnamnet";
 	}
 	else
 	{
-		echo "Du skrev inte samma lösenord två gånger";
+		if ($password == $password_again)
+		{
+			mysql_query("INSERT INTO users (username, password, email) VALUES ('".$username."', '".$password."', '".$email."')");
+			$_SESSION['userID'] = $_POST['username'];
+			$_SESSION['username'] = $_POST['password'];
+			$_SESSION['logged_in'] = true;
+			header('Location: ../../index.php');
+		}
+		else
+		{
+			echo "Du skrev inte samma lösenord två gånger";
+		}
 	}
+}else {
+	//To-do: Skickas till startsidan/registreringen där felen skall stå skrivna. Fult med en vit sida.
+	echo 'Alla fält är inte ifyllda';
 }
 ?>
