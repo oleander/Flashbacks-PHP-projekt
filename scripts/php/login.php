@@ -17,6 +17,6 @@ else
 		$_SESSION['username'] = $row['username'];
 		$_SESSION['logged_in'] = true;
 	}
-	header('Location: http://localhost/');
+	header('Location: ../../index.php');
 }
 ?>

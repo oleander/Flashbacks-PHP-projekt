@@ -4,5 +4,5 @@ foreach(array_keys($_SESSION) as $key)
 {
 	unset($_SESSION[$key]);
 }
-header('Location: http://localhost/');
+header('Location: ../../index.php');
 ?>
