@@ -8,7 +8,8 @@ $menu = array(
 	'Hem' => 'index.php',
 	'Vänner' => 'friends.php',
 	'Nyheter' => 'news.php',
-	'Inställningar' => 'settings.php'
+	'Inställningar' => 'settings.php',
+	'Profil' => 'profile.php'
 			 );
 ?>
 <ul>
