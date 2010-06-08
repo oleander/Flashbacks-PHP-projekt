@@ -67,14 +67,16 @@ $cfg = cfg() -> get_all();
 		</div>-->
 	</div>
 	<div id="content">
-			<div id="intro">
+			<div id="profile">
 <?php if(!$profile['exists']): ?>
 				<h1>Användaren finns inte</h1>
 				<a href="profile.php">Min profil</a>
 <?php else: ?>
 				<h1><?php echo $profile['username']; ?></h1>
-				Medlem sedan: <?php echo $profile['regdate']; ?><br/>
-				Email: <?php echo $profile['email']; ?>
+				<p><strong>Kontakt:</strong><br/>
+				Email: <a href="mailto:<?php echo $profile['email']; ?>"><?php echo $profile['email']; ?></a></p>
+				<p><strong>Fakta:</strong><br/>
+				Medlem sedan: <?php echo $profile['regdate']; ?><br/></p>
 <?php endif; ?>
 			</div>
 	</div>

@@ -152,3 +152,11 @@ a:visited {
 .single_news h5 a:visited {
 	color: black;
 }
+
+#profile {
+	border: 1px solid black;
+	width: 80%;
+	margin-left: 10%;
+	padding: 1em;
+	margin-top: 1em;
+}
