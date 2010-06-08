@@ -3,7 +3,7 @@ session_start();
 if(isset($_POST['username']) && strlen($_POST['username']) > 0 && isset($_POST['password']) && strlen($_POST['password']) > 0 
 	&& isset($_POST['email']) && strlen($_POST['email']) > 0 && isset($_POST['password_again']) && strlen($_POST['password_again']) > 0)
 {
-	include "/../../inc/mysql_config.php";
+	include "../../inc/mysql_config.php";
 	$username = mysql_real_escape_string($_POST['username']);
 	$password = mysql_real_escape_string($_POST['password']);
 	$password_again = mysql_real_escape_string($_POST['password_again']);

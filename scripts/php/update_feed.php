@@ -19,16 +19,16 @@ $result = mysql_query("SELECT * FROM news ORDER BY id desc LIMIT 0,5");
 
 while($row = mysql_fetch_array($result))
 {
-$stringData = "  <item>";
-fwrite($fh, $stringData);
-$stringData = "    <title>".$row['title']."</title>";
-fwrite($fh, $stringData);
-$stringData = "    <link>http://localhost</link>";
-fwrite($fh, $stringData);
-$stringData = "    <description>".$row['content']."</description>";
-fwrite($fh, $stringData);
-$stringData = "  </item>";
-fwrite($fh, $stringData);
+	$stringData = "  <item>";
+	fwrite($fh, $stringData);
+	$stringData = "    <title>".$row['title']."</title>";
+	fwrite($fh, $stringData);
+	$stringData = "    <link>http://localhost</link>";
+	fwrite($fh, $stringData);
+	$stringData = "    <description>".$row['content']."</description>";
+	fwrite($fh, $stringData);
+	$stringData = "  </item>";
+	fwrite($fh, $stringData);
 }
 $stringData = "</channel>\n";
 fwrite($fh, $stringData);

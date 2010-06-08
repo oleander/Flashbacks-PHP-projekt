@@ -1,5 +1,5 @@
 <?php
-include "/../../inc/mysql_config.php";
+include "inc/mysql_config.php";
 
 $result = mysql_query("SELECT * FROM news ORDER BY id desc LIMIT 0,5");
 

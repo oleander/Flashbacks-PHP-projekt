@@ -2,7 +2,7 @@
 session_start();
 if(isset($_POST['username']) && strlen($_POST['username']) > 0 && isset($_POST['password']) && strlen($_POST['password']) > 0)
 {
-	include "/../../inc/mysql_config.php";
+	include "../../inc/mysql_config.php";
 	//Tar bort farliga tecken från sql-frågan för att förhindra sql-injections
 	$username = mysql_real_escape_string($_POST['username']);
 	$password = md5(mysql_real_escape_string($_POST['password']));
