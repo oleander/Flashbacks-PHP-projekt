@@ -6,10 +6,10 @@ $current_file = basename($_SERVER['PHP_SELF']);
 //Menyn, innehåller "Namn" => "Adress" och visas i ordningen de är skrivna i
 $menu = array(
 	'Hem' => 'index.php',
+	'Profil' => 'profile.php',
 	'Vänner' => 'friends.php',
 	'Nyheter' => 'news.php',
-	'Inställningar' => 'settings.php',
-	'Profil' => 'profile.php'
+	'Inställningar' => 'settings.php'
 			 );
 ?>
 <ul>

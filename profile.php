@@ -70,7 +70,7 @@ $cfg = cfg() -> get_all();
 			<div id="profile">
 <?php if(!$profile['exists']): ?>
 				<h1>Användaren finns inte</h1>
-				<a href="profile.php">Min profil</a>
+				<a href="profile.php?id">Min profil</a>
 <?php else: ?>
 				<h1><?php echo $profile['username']; ?></h1>
 				<p><strong>Kontakt:</strong><br/>
