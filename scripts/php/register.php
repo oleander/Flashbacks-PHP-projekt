@@ -1,6 +1,6 @@
 <?php
 session_start();
-if(isset($_POST['username']) && strlen($_POST['username']) > 0 && isset($_POST['password']) && strlen($_POST['password']) > 0 
+if(isset($_POST['username']) && strlen($_POST['username']) > 4 && isset($_POST['password']) && strlen($_POST['password']) > 0 
 	&& isset($_POST['email']) && strlen($_POST['email']) > 0 && isset($_POST['password_again']) && strlen($_POST['password_again']) > 0)
 {
 	include "../../inc/mysql_config.php";
