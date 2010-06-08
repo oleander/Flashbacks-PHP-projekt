@@ -2,3 +2,5 @@ Att göra:
 	*Kryptera lösenorden.
 	*"Profil"-sida
 	*Sätt för medlemmarna att kommunicera
+	*Pagination till news.php
+	*Göra så att man kommer att man kommer till Lars sida när man trycker på "Lars" på news.php

@@ -76,19 +76,15 @@ if($printAllNews)
 	$result = mysql_query('SELECT * FROM news ORDER BY id DESC');
 ?>
 				<h1>Nyheter</h1>
-					<table>
-						<tr>
-							<th>Titel</th>
-							<th>Datum</th>
-						</tr>
 <?php while($row = mysql_fetch_array($result)): ?>
-						<tr>
-							<td><a href="?id=<?php echo $row['id']; ?>"><?php echo $row['title']; ?></a></td>
-							<td><?php echo $row['time']; ?></td>
-						</tr>
-<?php endwhile; ?>
-					</table>
+				<div class="single_news">
+				<h3><a href="?id=<?php echo $row['id']; ?>"><?php echo $row['title']; ?></a></h3>
+				<p><?php echo $row['content']; ?></p>
+				<h5>Datum: <?php echo substr($row['time'], 0,10); ?><br />
+				Av: <a href="profile.php?id=lars_id"><?php echo $row['publisher']; ?></a><h5>
+				</div>
 <?php
+endwhile;
 }else {
 	if($row = mysql_fetch_array($result)):
 ?>
