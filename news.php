@@ -31,7 +31,7 @@ foreach ($min_cfg as $name => $value) {
 $printAllNews = true;
 if(isset($_GET['id']) && preg_match("/^[0-9]+$/", $_GET['id']))
 {
-	$result = mysql_query('SELECT * FROM news WHERE id='.$_GET['id'].' LIMIT 0, 1');
+	$result = mysql_query('SELECT n.id, n.title, n.content, n.time, n.publisher, u.id AS userID, u.username FROM news AS n LEFT JOIN users AS u ON n.publisher = u.username WHERE n.id = '.$_GET['id'].' LIMIT 0,1');
 	if(mysql_num_rows($result) == 1)
 		$printAllNews = false;
 }
@@ -73,7 +73,7 @@ if(isset($_GET['id']) && preg_match("/^[0-9]+$/", $_GET['id']))
 <?php
 if($printAllNews)
 {
-	$result = mysql_query('SELECT * FROM news ORDER BY id DESC');
+	$result = mysql_query('SELECT n.id, n.title, n.content, n.time, n.publisher, u.id AS userID, u.username FROM news AS n LEFT JOIN users AS u ON n.publisher = u.username ORDER BY n.id DESC');
 ?>
 				<h1>Nyheter</h1>
 <?php while($row = mysql_fetch_array($result)): ?>
@@ -81,7 +81,7 @@ if($printAllNews)
 				<h3><a href="?id=<?php echo $row['id']; ?>"><?php echo $row['title']; ?></a></h3>
 				<p><?php echo $row['content']; ?></p>
 				<h5>Datum: <?php echo substr($row['time'], 0,10); ?><br />
-				Av: <a href="profile.php?id=lars_id"><?php echo $row['publisher']; ?></a><h5>
+				Av: <a href="profile.php?id=<?php echo $row['userID']; ?>"><?php echo $row['publisher']; ?></a><h5>
 				</div>
 <?php
 endwhile;
@@ -90,7 +90,8 @@ endwhile;
 ?>
 				<h1><?php echo $row['title']; ?></h1>
 				<p><?php echo $row['content']; ?></p>
-				<p><?php echo $row['time']; ?></p>
+				<p><?php echo $row['time']; ?><br/>
+				Av: <a href="profile.php?id=<?php echo $row['userID']; ?>"><?php echo $row['publisher']; ?></a></p>
 				<p><a href="news.php">Tillbaka</a></p>
 <?php 
 	endif;
