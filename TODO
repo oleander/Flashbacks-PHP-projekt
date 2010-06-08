@@ -1,9 +1,9 @@
 Att göra:
 Done	*Kryptera lösenorden.
-	*"Profil"-sida
+Done	*"Profil"-sida
 	*Sätt för medlemmarna att kommunicera
 	*Pagination till news.php
-	*Göra så att man kommer att man kommer till Lars sida när man trycker på "Lars" på news.php
+Done	*Göra så att man kommer att man kommer till Lars sida när man trycker på "Lars" på news.php
 
 Att fixa:
        *update_feed.php
