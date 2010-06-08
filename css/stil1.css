@@ -125,30 +125,30 @@ a:visited {
 }
 
 .single_news {
-background: #968148;
-border: 1px solid black;
-width: 60%;
-padding: 0.5em;
-margin: 0.5em;
+	background: #968148;
+	border: 1px solid black;
+	width: 60%;
+	padding: 0.5em;
+	margin: 0.5em;
 }
 
 .single_news h3 a{
-color: #4B4C3C;
-text-decoration: none;
+	color: #4B4C3C;
+	text-decoration: none;
 }
 
 .single_news h3 a:hover {
-text-decoration: underline;
+	text-decoration: underline;
 }
 
 .single_news h5 a {
-text-decoration: none;
+	text-decoration: none;
 }
 
 .single_news h5 a:hover {
-text-decoration: underline;
+	text-decoration: underline;
 }
 
 .single_news h5 a:visited {
-color: black;
+	color: black;
 }
