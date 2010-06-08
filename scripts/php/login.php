@@ -5,7 +5,7 @@ if(isset($_POST['username']) && strlen($_POST['username']) > 0 && isset($_POST['
 	include "/../../inc/mysql_config.php";
 	//Tar bort farliga tecken från sql-frågan för att förhindra sql-injections
 	$username = mysql_real_escape_string($_POST['username']);
-	$password = mysql_real_escape_string($_POST['password']);
+	$password = md5(mysql_real_escape_string($_POST['password']));
 	$result = mysql_query("SELECT * FROM users WHERE username = '" . $username . "' AND password = '" . $password . "' LIMIT 0, 1");
 
 

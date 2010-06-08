@@ -19,7 +19,7 @@ if(isset($_POST['username']) && strlen($_POST['username']) > 0 && isset($_POST['
 	{
 		if ($password == $password_again)
 		{
-			mysql_query("INSERT INTO users (username, password, email) VALUES ('".$username."', '".$password."', '".$email."')");
+			mysql_query("INSERT INTO users (username, password, email) VALUES ('".$username."', '".md5($password)."', '".$email."')");
 			$_SESSION['userID'] = $_POST['username'];
 			$_SESSION['username'] = $_POST['password'];
 			$_SESSION['logged_in'] = true;
