@@ -76,6 +76,7 @@ session_start();
 			</div>
 			<div id="registerDialog" title="Registrera dig">
 				<form action="scripts/php/register.php" method="post">
+					<h5 style="display: inline; color: red;">Använd ej samma lösenord här som du har på andra ställen!</h5><br />
 					<label for="username">Användarnamn: </label><input type="text" name="username" id="username"/><br />
 					<label for="password">Lösenord (x2): </label><input type="password" name="password" id="password"/><br />
 					<input type="password" name="password_again" id="password_again" /><br />
