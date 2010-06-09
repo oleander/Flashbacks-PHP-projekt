@@ -29,8 +29,11 @@ CREATE TABLE IF NOT EXISTS `messages` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `recipient` text NOT NULL,
   `message` text NOT NULL,
+  `from` int(11) NOT NULL,
+  `unread` int(11) NOT NULL DEFAULT '1',
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=9 ;
+) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+
 
 --
 -- Dumping data for table `messages`
@@ -81,6 +84,7 @@ CREATE TABLE IF NOT EXISTS `users` (
 --
 
 INSERT INTO `users` (`id`, `username`, `password`, `email`, `regdate`) VALUES
+(19, 'Tvillingen', '6802f22e37e6d92c8c2012e88632552d', 'aaa@aaa.se', '2010-06-09 11:55:13'),
 (18, 'Oskar', '6bd8937a8789a3e58489c4cfd514b1a7', 'hej@live.se', '2010-06-08 15:05:47'),
 (17, 'test', '098f6bcd4621d373cade4e832627b4f6', 'test@flashcom.mine.nu', '2010-06-08 15:02:27'),
 (16, 'hubb', '541c57960bb997942655d14e3b9607f9', 'hej', '2010-06-08 14:44:00'),
