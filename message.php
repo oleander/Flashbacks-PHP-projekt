@@ -71,7 +71,9 @@ $cfg = cfg() -> get_all();
 			<div id="message">
 				<form action="scripts/php/send_message.php" method="post">
 					Mottagare:<br/>
-					<input name="to" type="text" style="font-weight:bold;" value="<?php echo ($user['exists']) ? $user['username'] : ''; ?>" size="33"/><br/><br/>
+					<input name="to" type="text" style="font-weight:bold;" value="<?php echo ($user['exists']) ? $user['username'] : ''; ?>" size="33"/><br/>
+					Rubrik:<br/>
+					<input name="subject" type="text" style="font-weight:bold;" size="33"/><br/><br/>
 					Meddelande:<br/><textarea name="message" rows="10" cols="30"></textarea><br/>
 					<input type="submit" name="submit" value="Skicka"/>
 				</form>
