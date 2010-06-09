@@ -12,9 +12,9 @@ function cfg() {
 	return $GLOBALS['cfg'];
 }
 
-if(isset($_GET['id']))
+if(isset($_GET['to']))
 {
-	$id = (preg_match("/^[0-9]+$/", $_GET['id'])) ? $_GET['id'] : $_SESSION['userID'];
+	$id = (preg_match("/^[0-9]+$/", $_GET['to'])) ? $_GET['to'] : $_SESSION['userID'];
 }else {
 	$id = $_SESSION['userID'];
 }
@@ -67,17 +67,17 @@ $cfg = cfg() -> get_all();
 		</div>-->
 	</div>
 	<div id="content">
-			<div id="profile">
+			<div id="message">
 <?php if(!$profile['exists']): ?>
 				<h1>Användaren finns inte</h1>
 				<a href="profile.php?id">Min profil</a>
 <?php else: ?>
-				<h1><?php echo $profile['username']; ?></h1>
-				<p><strong>Kontakt:</strong><br/>
-				Email: <a href="mailto:<?php echo $profile['email']; ?>"><?php echo $profile['email']; ?></a><br/>
-				<a href="message.php?to=<?php echo $id; ?>">Skicka meddelande</a></p>
-				<p><strong>Fakta:</strong><br/>
-				Medlem sedan: <?php echo $profile['regdate']; ?><br/></p>
+				<form action="scripts/php/send_message.php" method="post">
+					Mottagare:<br/>
+					<input name="to" type="text" style="font-weight:bold;" value="<?php echo $profile['username']; ?>" size="33"/><br/><br/>
+					Meddelande:<br/><textarea name="message" rows="10" cols="30"></textarea><br/>
+					<input type="submit" name="submit" value="Skicka"/>
+				</form>
 <?php endif; ?>
 			</div>
 	</div>

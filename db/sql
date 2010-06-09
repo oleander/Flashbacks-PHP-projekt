@@ -2,10 +2,10 @@
 -- version 3.2.0.1
 -- http://www.phpmyadmin.net
 --
--- Värd: localhost
--- Skapad: 08 juni 2010 kl 12:21
--- Serverversion: 5.1.36
--- PHP-version: 5.3.0
+-- Host: localhost
+-- Generation Time: Jun 09, 2010 at 03:01 AM
+-- Server version: 5.1.36
+-- PHP Version: 5.3.0
 
 SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
 
@@ -16,13 +16,31 @@ SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
 /*!40101 SET NAMES utf8 */;
 
 --
--- Databas: `flashback`
+-- Database: `flashback`
 --
 
 -- --------------------------------------------------------
 
 --
--- Struktur för tabell `news`
+-- Table structure for table `messages`
+--
+
+CREATE TABLE IF NOT EXISTS `messages` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `recipient` text NOT NULL,
+  `message` text NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=9 ;
+
+--
+-- Dumping data for table `messages`
+--
+
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `news`
 --
 
 CREATE TABLE IF NOT EXISTS `news` (
@@ -32,20 +50,21 @@ CREATE TABLE IF NOT EXISTS `news` (
   `time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   `publisher` text NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
 
 --
--- Data i tabell `news`
+-- Dumping data for table `news`
 --
 
 INSERT INTO `news` (`id`, `title`, `content`, `time`, `publisher`) VALUES
-(1, 'Första nyheten', 'Detta är första nyheten.', '2010-06-08 11:38:30', 'Lars'),
-(2, 'Login-system', 'Loginsystemet ska nu vara fullt fungerande.', '2010-06-08 11:38:30', 'Lars');
+(1, 'Första nyheten', 'Detta är första nyheten.', '2010-06-08 15:39:41', 'diggan'),
+(2, 'Login-system', 'Loginsystemet ska nu vara fullt fungerande.', '2010-06-09 05:01:00', 'diggan'),
+(4, 'Skicka meddelande.', 'Skicka meddelande funkar nu men tyvärr så kan man inte läsa de man fått ännu, jobbar på det.', '2010-06-09 05:00:55', 'diggan');
 
 -- --------------------------------------------------------
 
 --
--- Struktur för tabell `users`
+-- Table structure for table `users`
 --
 
 CREATE TABLE IF NOT EXISTS `users` (
@@ -55,11 +74,15 @@ CREATE TABLE IF NOT EXISTS `users` (
   `email` text NOT NULL,
   `regdate` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=15 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=19 ;
 
 --
--- Data i tabell `users`
+-- Dumping data for table `users`
 --
 
 INSERT INTO `users` (`id`, `username`, `password`, `email`, `regdate`) VALUES
+(18, 'Oskar', '6bd8937a8789a3e58489c4cfd514b1a7', 'hej@live.se', '2010-06-08 15:05:47'),
+(17, 'test', '098f6bcd4621d373cade4e832627b4f6', 'test@flashcom.mine.nu', '2010-06-08 15:02:27'),
+(16, 'hubb', '541c57960bb997942655d14e3b9607f9', 'hej', '2010-06-08 14:44:00'),
+(15, 'peffe22', '7ad675286e210b6551cb194bca60650b', 'darkmanzhc@hotmail.com', '2010-06-08 14:36:36'),
 (14, 'diggan', 'ffc150a160d37e92012c196b6af4160d', 'nils@petter.sundgren', '2010-06-08 13:12:43');

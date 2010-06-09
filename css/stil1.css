@@ -15,7 +15,7 @@ a:hover {
 }
 
 a:visited {
-	color: #828282
+	color: #000;
 }
 
 #wrapper {
@@ -154,9 +154,19 @@ a:visited {
 }
 
 #profile {
+	background: #968148;
 	border: 1px solid black;
 	width: 80%;
 	margin-left: 10%;
+	padding: 1em;
+	margin-top: 1em;
+}
+
+#message {
+	background: #968148;
+	border: 1px solid black;
+	width: 50%;
+	margin-left: 25%;
 	padding: 1em;
 	margin-top: 1em;
 }
