@@ -1,7 +1,10 @@
 <?php
 session_start();
 if(!isset($_SESSION['logged_in']))
+{
 	header('location: index.php');
+	die();
+}
 	
 require('inc/mysql_config.php');	
 require('inc/config.php');
@@ -15,23 +18,21 @@ function cfg() {
 if(isset($_GET['to']))
 {
 	$id = (preg_match("/^[0-9]+$/", $_GET['to'])) ? $_GET['to'] : $_SESSION['userID'];
-}else {
-	$id = $_SESSION['userID'];
 }
-$profile = array('exists' => false);
-$result = mysql_query('SELECT username, email, regdate FROM users WHERE id = '.mysql_real_escape_string($id).' LIMIT 0, 1');
-//Gets all profile data
-if($row = mysql_fetch_array($result))
+$user = array('exists' => false);
+if(isset($id))
 {
-	$profile['exists'] = true;
-	$profile['username'] = htmlentities($row['username']);
-	$profile['email'] = htmlentities($row['email']);
-	$profile['regdate'] = htmlentities($row['regdate']);
+	$result = mysql_query('SELECT username FROM users WHERE id = '.mysql_real_escape_string($id).' LIMIT 0, 1');
+	//Gets user-data
+	if($row = mysql_fetch_array($result))
+	{
+		$user['exists'] = true;
+		$user['username'] = htmlentities($row['username']);
+	}
 }
-$title = ($profile['exists']) ? $profile['username'] : 'Unknown';
 	
 /* Konfigueringar */
-cfg() -> set('titel', $title.' - FB-Community'); // En konfigurering 
+cfg() -> set('titel', 'Skicka PM - FB-Community'); // En konfigurering 
 $cfg = cfg() -> get_all();
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
@@ -68,17 +69,12 @@ $cfg = cfg() -> get_all();
 	</div>
 	<div id="content">
 			<div id="message">
-<?php if(!$profile['exists']): ?>
-				<h1>Användaren finns inte</h1>
-				<a href="profile.php?id">Min profil</a>
-<?php else: ?>
 				<form action="scripts/php/send_message.php" method="post">
 					Mottagare:<br/>
-					<input name="to" type="text" style="font-weight:bold;" value="<?php echo $profile['username']; ?>" size="33"/><br/><br/>
+					<input name="to" type="text" style="font-weight:bold;" value="<?php echo ($user['exists']) ? $user['username'] : ''; ?>" size="33"/><br/><br/>
 					Meddelande:<br/><textarea name="message" rows="10" cols="30"></textarea><br/>
 					<input type="submit" name="submit" value="Skicka"/>
 				</form>
-<?php endif; ?>
 			</div>
 	</div>
 </div>

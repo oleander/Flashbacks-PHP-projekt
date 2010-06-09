@@ -1,7 +1,10 @@
 <?php
 session_start();
 if(!isset($_SESSION['logged_in']))
+{
 	header('location: index.php');
+	die();
+}
 	
 require('inc/mysql_config.php');	
 require('inc/config.php');
@@ -19,11 +22,12 @@ if(isset($_GET['id']))
 	$id = $_SESSION['userID'];
 }
 $profile = array('exists' => false);
-$result = mysql_query('SELECT username, email, regdate FROM users WHERE id = '.mysql_real_escape_string($id).' LIMIT 0, 1');
+$result = mysql_query('SELECT id, username, email, regdate FROM users WHERE id = '.mysql_real_escape_string($id).' LIMIT 0, 1');
 //Gets all profile data
 if($row = mysql_fetch_array($result))
 {
 	$profile['exists'] = true;
+	$profile['id'] = $row['id'];
 	$profile['username'] = htmlentities($row['username']);
 	$profile['email'] = htmlentities($row['email']);
 	$profile['regdate'] = htmlentities($row['regdate']);
@@ -75,7 +79,7 @@ $cfg = cfg() -> get_all();
 				<h1><?php echo $profile['username']; ?></h1>
 				<p><strong>Kontakt:</strong><br/>
 				Email: <a href="mailto:<?php echo $profile['email']; ?>"><?php echo $profile['email']; ?></a><br/>
-				<a href="message.php?to=<?php echo $id; ?>">Skicka meddelande</a></p>
+				<a href="message.php?to=<?php echo $profile['id']; ?>">Skicka meddelande</a></p>
 				<p><strong>Fakta:</strong><br/>
 				Medlem sedan: <?php echo $profile['regdate']; ?><br/></p>
 <?php endif; ?>
