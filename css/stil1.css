@@ -43,13 +43,13 @@ a:visited {
 }
 
 #menu {
-	width: 40%;
+	width: 50%;
 	float: left;
 	margin-left: 10%;
 }
 
 #meta {
-	width: 40%;
+	width: 30%;
 	float: left;
 	text-align: right;
 	margin-right: 10%;
