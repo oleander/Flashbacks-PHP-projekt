@@ -2,7 +2,7 @@
 session_start();
 if(!isset($_SESSION['logged_in']))
 {
-	header('location: index.php');
+	header('location: ../../index.php');
 	die();
 }
 require('../../inc/mysql_config.php');

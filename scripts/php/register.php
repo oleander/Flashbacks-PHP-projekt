@@ -20,9 +20,6 @@ if(isset($_POST['username']) && strlen($_POST['username']) > 4 && isset($_POST['
 		if ($password == $password_again)
 		{
 			mysql_query("INSERT INTO users (username, password, email) VALUES ('".$username."', '".md5($password)."', '".$email."')");
-			$_SESSION['userID'] = $_POST['username'];
-			$_SESSION['username'] = $_POST['password'];
-			$_SESSION['logged_in'] = true;
 			header('Location: ../../index.php');
 		}
 		else
@@ -31,7 +28,6 @@ if(isset($_POST['username']) && strlen($_POST['username']) > 4 && isset($_POST['
 		}
 	}
 }else {
-	//To-do: Skickas till startsidan/registreringen där felen skall stå skrivna. Fult med en vit sida.
 	echo 'Alla fält är inte ifyllda';
 }
 ?>
