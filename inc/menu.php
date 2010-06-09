@@ -2,7 +2,7 @@
 
 //Hämtar filnamn till aktuell sida
 $current_file = basename($_SERVER['PHP_SELF']);
-require("/scripts/php/check_new_pm.php");
+require("scripts/php/check_new_pm.php");
 //Menyn, innehåller "Namn" => "Adress" och visas i ordningen de är skrivna i
 $menu = array(
 	'Hem' => 'index.php',

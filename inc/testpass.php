@@ -2,6 +2,7 @@
 require("passwords.php");
 
 $hash = generateHash('login');
+echo $hash;
 
 $result =  matchPassword('login', $hash);
 
