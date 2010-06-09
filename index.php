@@ -89,7 +89,7 @@ session_start();
 			<p>Här kan du uppleva yttrandefriheten som finns på Flashback forum fast på en mera community-baserad plattform.</p>
 			<p>Du blir tilldelad en egen profil som du kan skräddarsy för att spegla din personlighet och åsikter.</p>
 			<p>Det finns även olika mötesplatser på sidan för att olika medlemmar ska kunna träffas och kommunicera med varandra.</p>
-			<h4 style="color: red;">OBS<br/>Ingeting du skriver här på sidan här skyddat från någon annans ögon då hela databasen är öppen för allas ögon så tänk på vad du gör när du skriver saker</h4></div>
+			<h4 style="color: red;">OBS<br/>Ingenting du skriver här på sidan är skyddat från någon annans ögon då hela databasen är öppen så tänk på vad du skriver.</h4></div>
 			<div id="news">
 				<?php include 'scripts/php/get_news.php'; ?>
 			</div>
