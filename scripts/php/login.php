@@ -1,14 +1,17 @@
 <?php
 session_start();
+
+// Include support for error messages
+require_once("../../inc/error.php");
+$error = new Error();
+
 if(isset($_POST['username']) && strlen($_POST['username']) > 0 && isset($_POST['password']) && strlen($_POST['password']) > 0)
 {
-	// We need SQL support and Error class
+	// We need SQL support
 	// passwords.php to match password
 	require_once("../../inc/mysql_config.php");
-	require_once("../../inc/error.php");
 	require_once("../../inc/passwords.php");
 	
-	$error = new Error();
 
 	//Tar bort farliga tecken från sql-frågan för att förhindra sql-injections
 	$username = mysql_real_escape_string($_POST['username']);
