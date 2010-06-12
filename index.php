@@ -123,6 +123,20 @@ if((isset($_GET['register'])) && ($_GET['register'] == 1))
 
 	echo "			</div>\n";
 }
+
+// Login failure messages
+if((isset($_GET['login'])) && ($_GET['login'] == 1) && 
+	isset($_GET['error']) && ($_GET['error'] > 0))
+{
+	echo "			<div id=\"messageBox\">\n";
+	
+	// Well we do allow for multiple possible login
+	// errors to be announced but we only say login failed
+	// anyway, so using a static message for now.
+	echo "				<p><b>Inloggningen misslyckades.</b></p>\n";
+
+	echo "			</div>\n";
+}
 ?>
 			</div>
 			<div id="news">

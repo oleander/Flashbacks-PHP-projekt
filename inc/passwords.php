@@ -27,7 +27,7 @@ function matchPassword($userPassword, $saltAndHash)
 	$salt = $hashValues[0];
 	$hash = $hashValues[1];
 
-	if((md5($salt.$userPassword)) == $hash)
+	if((hash("sha512", $salt.$userPassword)) == $hash)
 		return true;
 	else
 		return false;
@@ -40,7 +40,7 @@ function matchPassword($userPassword, $saltAndHash)
 function generateHash($userPassword)
 {
 	$salt = generateSalt();
-	$result = $salt.".".md5($salt.$userPassword);
+	$result = $salt.".".hash("sha512", $salt.$userPassword);
 
 	return $result;
 }

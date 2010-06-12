@@ -37,7 +37,7 @@ class Error
 		"FORMAT_EMAIL"    => array(64,  "Ogiltig e-postadress."),
 		"NO_ALLFIELDS"    => array(128, "Alla fält måste vara ifyllda."),
 		"USER_EXIST"      => array(256, "Användarnamnet finns redan."),
-		"WRONG_UP"        => array(512, "Felaktigt användarnamn eller lösenord.")
+		"FAIL_LOGIN"      => array(512, "Felaktigt användarnamn eller lösenord.")
 		);
 	
 	/*

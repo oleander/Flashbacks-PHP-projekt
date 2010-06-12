@@ -9,4 +9,5 @@ Done	*Göra så att man kommer att man kommer till Lars sida när man trycker p�
 
 Att fixa:
 Done *update_feed.php
-	*Vettigt felmeddelande vid misslyckad inloggning.
+Done *Vettigt felmeddelande vid misslyckad inloggning.
+	*Snygga till messageBox på indexsidan
