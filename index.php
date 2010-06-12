@@ -1,4 +1,5 @@
 <?php
+include("inc/validate.php");
 session_start();
     /* Hantering av konfigurering */
 	
@@ -85,11 +86,42 @@ session_start();
 				</form>
 			</div>
 			<div id="intro">
-			<h2>Välkommen till Flashback Communitys</h2>
-			<p>Här kan du uppleva yttrandefriheten som finns på Flashback forum fast på en mera community-baserad plattform.</p>
-			<p>Du blir tilldelad en egen profil som du kan skräddarsy för att spegla din personlighet och åsikter.</p>
-			<p>Det finns även olika mötesplatser på sidan för att olika medlemmar ska kunna träffas och kommunicera med varandra.</p>
-			<h4 style="color: red;">OBS<br/>Ingenting du skriver här på sidan är skyddat från någon annans ögon då hela databasen är öppen så tänk på vad du skriver.</h4></div>
+				<h2>Välkommen till Flashback Communitys</h2>
+				<p>Här kan du uppleva yttrandefriheten som finns på Flashback forum fast på en mera community-baserad plattform.</p>
+				<p>Du blir tilldelad en egen profil som du kan skräddarsy för att spegla din personlighet och åsikter.</p>
+				<p>Det finns även olika mötesplatser på sidan för att olika medlemmar ska kunna träffas och kommunicera med varandra.</p>
+				<h4 style="color: red;">OBS<br/>Ingenting du skriver här på sidan är skyddat från någon annans ögon då hela databasen är öppen så tänk på vad du skriver.</h4>
+			</div>
+<?php 
+// If we have register messages put them here for now
+// I'm not a designer. ;)
+if((isset($_GET['register'])) && ($_GET['register'] == 1))
+{
+	echo "<div id=\"registerMessages\">\n";
+	
+	if((isset($_GET['error'])) && ($_GET['error'] > 0))
+	{
+		// We had a register error
+		require_once("inc/error.php");
+
+		$error = new Error($_GET['error']);
+
+		echo "<ul>\n";
+		foreach($error->getErrors() as $errorRow)
+		{
+			echo "<li>".$errorRow."</li>\n";
+		}
+		echo "</ul>\n";
+	}
+	else
+	{
+		// Everything is OK. Registration worked!
+		echo "Du är nu registrerad och kan logga in uppe till höger.";
+	}
+
+	echo "</div>\n";
+}
+?>
 			<div id="news">
 				<?php include 'scripts/php/get_news.php'; ?>
 			</div>

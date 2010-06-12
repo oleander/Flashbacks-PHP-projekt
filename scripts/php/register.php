@@ -22,22 +22,62 @@ if(isset($_POST['username'],
 	$pass  = $_POST['password'];
 	$pass2 = $_POST['password_again'];
 	$email = $_POST['email'];
+
+	// Now we do some other input validation
+
+	// Check username format
+	if(!validateUsername($user))
+	{
+		$error->add("FORMAT_USERNAME");
+	}
+
+	// Check password format
+	if(!validatePassword($pass))
+		$error->add("FORMAT_PASSWORD");
+
+	// Check email format
+	if(!validateEmail($email))
+		$error->add("FORMAT_EMAIL");
+
+	// Do both password inputs match?
+	if($pass != $pass)
+		$error->add("DIFF_PASSWORDS");
 }
 else
 {
 	// Not all fields were set.
-	header("location: ../../?error=not_all_fields");
-	exit();
+	// We could set NO_XXX for all fields but
+	// for now using a catch all error.
+	$error->add("NO_ALLFIELDS");	
 }
 
-// Now we do some other input validation
+// If we have no errors we insert our new user
+if(!$error->isError())
+{
+	// We need MySQL support now
+	require_once("../../inc/mysql_config.php");
+	
+	// Also need password hash functions
+	require_once("../../inc/passwords.php");
 
-// Check username format
-if(!validateUsername($user))
-	echo "stämde inte";
+	// We need a hashed password
+	$passInsert = generateHash($pass);
 
-// We need MySQL support now
-require_once("../../inc/mysql_config.php");
+	// Now we insert our new user.
+	// Since I made username unique in the database we'll get
+	// an error if we try to insert an already existing user.
+	$query = "insert into users(username, password, email) 
+		values('$user', '$passInsert', '$email')";
+	mysql_query($query);
+
+	// errno 1062 is a MySQL specific error for duplicate entry
+	// Who said anything about portability? ;)
+	if(mysql_errno() == 1062)
+		$error->add("USER_EXIST");
+}
+
+header("location: ../../index.php?error=".$error->getValue()."&register=1");
+exit();
 
 
 

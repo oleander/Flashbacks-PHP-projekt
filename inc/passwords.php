@@ -35,7 +35,7 @@ function matchPassword($userPassword, $saltAndHash)
 
 /*
  * Takes a password then generates a salt
- * and creates a hash of password and salt.
+ * and creates a hash. Returns salt+hash.
  */
 function generateHash($userPassword)
 {

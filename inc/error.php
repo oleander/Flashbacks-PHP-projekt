@@ -7,7 +7,9 @@
  *
  * To understand this class you should probably understand
  * some about bitwise operations. Google them!
+ * (or just go here http://www.litfuel.net/tutorials/bitwise.htm)
  */
+
 class Error
 {
 	// Errors are saved in an integer and tested by methods
@@ -17,16 +19,25 @@ class Error
 	private $errorValue = 0;
 
 	// There are probably better ways to do this.
+	// Probably should make a way to load error list in a
+	// dynamic way.
+	// Also on a 32 bit system we can only have 32 different
+	// errors. Bit of a bummer. ;)
 	// Right now we keep a multi dimensional array in the form
 	// $errors['errorName'][0] - Being the error number
 	// $errors['errorName'][1] - Being the error description
 	private $errors = array(
-		"NO_USERNAME"     => array(1,  "Inget användarnamn matades in."),
-		"NO_PASSWORD"     => array(2,  "Inget lösenord matades in."),
-		"NO_EMAIL"        => array(4,  "Ingen e-postadress matades in."),
-		"DIFF_PASSWORDS"  => array(8,  "Lösenorden matchade inte."),
-		"FORMAT_USERNAME" => array(16, "Användarnamnet måste ha minst fyra tecken
-		  där tillåtna tecken är a-z A-Z 0-9 samt _."));
+		"NO_USERNAME"     => array(1,   "Inget användarnamn matades in."),
+		"NO_PASSWORD"     => array(2,   "Lösenord måste matas in två gånger."),
+		"NO_EMAIL"        => array(4,   "Ingen e-postadress matades in."),
+		"DIFF_PASSWORDS"  => array(8,   "Lösenorden matchade inte."),
+		"FORMAT_USERNAME" => array(16,  "Användarnamnet måste ha minst fyra tecken
+		  där tillåtna tecken är a-z A-Z 0-9 samt _."),
+		"FORMAT_PASSWORD" => array(32,  "Lösenordet måste ha minst åtta tecken."),
+		"FORMAT_EMAIL"    => array(64,  "Ogiltig e-postadress."),
+		"NO_ALLFIELDS"    => array(128, "Alla fält måste vara ifyllda."),
+		"USER_EXIST"      => array(256, "Användarnamnet finns redan.")
+		);
 	
 	/*
 	 * Constructor
@@ -67,7 +78,7 @@ class Error
 	{
 		// Sets a bit flag using or bitwise operator.
 		// Returns true if error was set or false if the error doesn't exist.
-		if(array_key_exists($errorName, $this->errors))
+		if($this->isValidError($errorName))
 		{
 			$this->errorValue |= $this->errors[$errorName][0];
 			return true;
@@ -124,17 +135,46 @@ class Error
 
 		return $possibleErrors;
 	}
-}
 
-$error = new Error();
-foreach($error->getPossibleErrors() as $errorList)
-{
-	echo $errorList."<br />\n";
-}
+	/*
+	 * Checks is a given error is currently set.
+	 */
+	public function isErrorSet($errorName)
+	{
+		if($this->isValidError($errorName))
+		{
+			$errorValue = $this->errors[$errorName][0];
+			if($this->errorValue & $errorValue)
+				return true;
+			else
+				return false;
+		}
+		else
+		{
+			// Well the error is not even in the list so it cannot have
+			// been set.
+			return false;
+		}
+	}
 
-foreach($error->getErrors() as $errorRow)
-{
-	echo $errorRow."<br />\n";
+	/*
+	 * Clear error flags
+	 */
+	public function clear()
+	{
+		$this->errorValue = 0;
+	}
+
+	/*
+	 * Protected function to check if a given error name
+	 * is in the error list.
+	 */
+	protected function isValidError($errorName)
+	{
+		if(array_key_exists($errorName, $this->errors))
+			return true;
+		else
+			return false;
+	}
 }
-$error->add("NO_USERNAME");
 ?>
