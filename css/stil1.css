@@ -170,3 +170,10 @@ a:visited {
 	padding: 1em;
 	margin-top: 1em;
 }
+
+#messageBox {
+	color: #000;
+	background: #fff;
+	width: 60%;
+	padding: 1em;
+}

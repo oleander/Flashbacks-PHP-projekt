@@ -33,7 +33,7 @@ session_start();
 <head>  
 	<meta http-equiv="content-type" content="text/html; charset=utf-8"/>
 	<title><?php echo $cfg["titel"]; ?></title>
-	<link rel="alternate" type="application/rss+xml" href="/inc/feed.xml" title="Flashback Community News Feed" />
+	<link rel="alternate" type="application/rss+xml" href="scripts/php/update_feed.php" title="Flashback Community News Feed" />
 	<link rel="stylesheet" href="css/stil1.css" type="text/css" />
 	<link type="text/css" href="css/ui-lightness/jquery-ui-1.8.1.custom.css" rel="stylesheet" />
 	<script type="text/javascript" src="scripts/js/jquery-1.4.2.min.js"></script>
@@ -91,13 +91,13 @@ session_start();
 				<p>Du blir tilldelad en egen profil som du kan skräddarsy för att spegla din personlighet och åsikter.</p>
 				<p>Det finns även olika mötesplatser på sidan för att olika medlemmar ska kunna träffas och kommunicera med varandra.</p>
 				<h4 style="color: red;">OBS<br/>Ingenting du skriver här på sidan är skyddat från någon annans ögon då hela databasen är öppen så tänk på vad du skriver.</h4>
-			</div>
 <?php 
 // If we have register messages put them here for now
 // I'm not a designer. ;)
+// Should definately do something about looks
 if((isset($_GET['register'])) && ($_GET['register'] == 1))
 {
-	echo "<div id=\"registerMessages\">\n";
+	echo "			<div id=\"messageBox\">\n";
 	
 	if((isset($_GET['error'])) && ($_GET['error'] > 0))
 	{
@@ -106,22 +106,25 @@ if((isset($_GET['register'])) && ($_GET['register'] == 1))
 
 		$error = new Error($_GET['error']);
 
-		echo "<ul>\n";
+		echo "				<p><b>Misslyckad registrering:</b></p>\n";
+		echo "				<ul>\n";
 		foreach($error->getErrors() as $errorRow)
 		{
-			echo "<li>".$errorRow."</li>\n";
+			echo "					<li>".$errorRow."</li>\n";
 		}
-		echo "</ul>\n";
+		echo "				</ul>\n";
 	}
 	else
 	{
 		// Everything is OK. Registration worked!
-		echo "Du är nu registrerad och kan logga in uppe till höger.";
+		echo "				<p><b>Registreringen lyckades</b></p>\n";
+		echo "				<p>Du är nu registrerad och kan logga in uppe till höger.</p>\n";
 	}
 
-	echo "</div>\n";
+	echo "			</div>\n";
 }
 ?>
+			</div>
 			<div id="news">
 				<?php include 'scripts/php/get_news.php'; ?>
 			</div>
