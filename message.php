@@ -30,6 +30,19 @@ if(isset($id))
 		$user['username'] = htmlentities($row['username']);
 	}
 }
+
+$result = mysql_query('SELECT m.id, m.subject, m.unread, u.id AS userID, u.username FROM messages AS m LEFT JOIN users AS u ON m.from = u.id');
+$messages = array();
+$i = 0;
+while($row = mysql_fetch_array($result))
+{
+	$messages[$i]['id'] = $row['id'];
+	$messages[$i]['subject'] = htmlentities($row['subject']);
+	$messages[$i]['from'] = htmlentities($row['username']);
+	$messages[$i]['userID'] = $row['userID'];
+	$messages[$i]['unread'] = $row['unread'];
+	$i++;
+}
 	
 /* Konfigueringar */
 cfg() -> set('titel', 'Skicka PM - FB-Community'); // En konfigurering 
@@ -41,7 +54,7 @@ $cfg = cfg() -> get_all();
 
 <head>  
 	<meta http-equiv="content-type" content="text/html; charset=utf-8"/>
-	<title><?php echo $cfg["titel"]; ?></title>
+	<title><?php echo $cfg['titel']; ?></title>
 	<link rel="alternate" type="application/rss+xml" href="/inc/feed.xml" title="Flashback Community News Feed" />
 	<link rel="stylesheet" href="css/stil1.css" type="text/css" />
 	<link type="text/css" href="css/ui-lightness/jquery-ui-1.8.1.custom.css" rel="stylesheet" />
@@ -68,8 +81,6 @@ $cfg = cfg() -> get_all();
 		</div>-->
 	</div>
 	<div id="content">
-			<?php if(!isset($_GET['action'])) { ?>
-			<?php if ($_GET['action'] = 'new') {?>
 			<div id="message">
 				<form action="scripts/php/send_message.php" method="post">
 					Mottagare:<br/>
@@ -80,11 +91,26 @@ $cfg = cfg() -> get_all();
 					<input type="submit" name="submit" value="Skicka"/>
 				</form>
 			</div>
-			<?php } else {?>
-			Hej
-			<?php } } else {?>
-			hejdå
-			<?php }?>
+			<div id="message">
+<?php if(count($messages) > 0): ?>
+				<table>
+					<tr>
+						<th>Rubrik</th>
+						<th>Från</th>
+						<th>Oläst</th>
+					</tr>
+<?php foreach($messages as $message): ?>
+					<tr>
+						<td><a href="read_message.php?id=<?php echo $message['id']; ?>"><?php echo $message['subject']; ?></a></td>
+						<td><a href="profile.php?id=<?php echo $message['userID']; ?>"><?php echo $message['from']; ?></a></td>
+						<td><?php echo ($message['unread']) ? 'Ja' : 'Nej'; ?></td>
+					</tr>
+<?php endforeach; ?>
+				</table>
+<?php else: ?>
+				Här var det tomt!
+<?php endif; ?>
+			</div>
 	</div>
 </div>
 </body>
