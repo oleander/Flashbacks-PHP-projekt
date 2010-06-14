@@ -83,6 +83,29 @@ $cfg = cfg() -> get_all();
 				<p><strong>Fakta:</strong><br/>
 				Medlem sedan: <?php echo $profile['regdate']; ?><br/></p>
 <?php endif; ?>
+				<?php
+				$sql=mysql_query("SELECT * FROM videos WHERE belong_to = '$profile[id]'");
+					if (!$sql) {
+						die('Invalid query: ' . mysql_error());
+					}
+				else
+				{
+						while($row=mysql_fetch_array($sql))
+						{
+				?>
+						<div id="video">
+						<p><strong>Uppladdat material:</strong></p>
+							<?php echo $row['title'];?><br>
+							<video id="demo-video" poster="uploads/ikea_reklam_snapshot.png" controls>
+							<source src="uploads/<?php echo $row['source'];?>" type="video/ogg" />
+							</video><br>
+							<?php echo $row['desc'];?><br>
+							<?php echo $row['timestamp'];?><br>
+						</div>
+						<?php
+					}
+				}
+				?>
 			</div>
 	</div>
 </div>

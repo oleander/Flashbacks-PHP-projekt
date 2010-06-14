@@ -68,6 +68,8 @@ $cfg = cfg() -> get_all();
 		</div>-->
 	</div>
 	<div id="content">
+			<?php if(!isset($_GET['action'])) { ?>
+			<?php if ($_GET['action'] = 'new') {?>
 			<div id="message">
 				<form action="scripts/php/send_message.php" method="post">
 					Mottagare:<br/>
@@ -78,6 +80,11 @@ $cfg = cfg() -> get_all();
 					<input type="submit" name="submit" value="Skicka"/>
 				</form>
 			</div>
+			<?php } else {?>
+			Hej
+			<?php } } else {?>
+			hejdå
+			<?php }?>
 	</div>
 </div>
 </body>
