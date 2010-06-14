@@ -31,6 +31,20 @@ if($row = mysql_fetch_array($result))
 	$profile['username'] = htmlentities($row['username']);
 	$profile['email'] = htmlentities($row['email']);
 	$profile['regdate'] = htmlentities($row['regdate']);
+	$sql = mysql_query("SELECT * FROM videos WHERE belong_to = '".$profile['id']."'");
+	$videos = array();
+	if($sql)
+	{
+		$i = 0;
+		while($video = mysql_fetch_array($sql))
+		{
+			$videos[$i]['title'] = $video['title'];
+			$videos[$i]['source'] = $video['source'];
+			$videos[$i]['desc'] = $video['desc'];
+			$videos[$i]['timestamp'] = $video['timestamp'];
+			$i++;
+		}
+	}
 }
 $title = ($profile['exists']) ? $profile['username'] : 'Unknown';
 	
@@ -82,30 +96,20 @@ $cfg = cfg() -> get_all();
 				<a href="message.php?to=<?php echo $profile['id']; ?>">Skicka meddelande</a></p>
 				<p><strong>Fakta:</strong><br/>
 				Medlem sedan: <?php echo $profile['regdate']; ?><br/></p>
-<?php endif; ?>
-				<?php
-				$sql=mysql_query("SELECT * FROM videos WHERE belong_to = '$profile[id]'");
-					if (!$sql) {
-						die('Invalid query: ' . mysql_error());
-					}
-				else
-				{
-						while($row=mysql_fetch_array($sql))
-						{
-				?>
-						<div id="video">
-						<p><strong>Uppladdat material:</strong></p>
-							<?php echo $row['title'];?><br>
-							<video id="demo-video" poster="uploads/ikea_reklam_snapshot.png" controls>
-							<source src="uploads/<?php echo $row['source'];?>" type="video/ogg" />
-							</video><br>
-							<?php echo $row['desc'];?><br>
-							<?php echo $row['timestamp'];?><br>
-						</div>
-						<?php
-					}
-				}
-				?>
+<?php foreach($videos as $video): ?>
+				<div id="video">
+					<p><strong>Uppladdat material:</strong></p>
+						<?php echo $video['title']; ?><br>
+						<video id="demo-video" poster="uploads/ikea_reklam_snapshot.png" controls>
+						<source src="uploads/<?php echo $video['source'];?>" type="video/ogg" />
+						</video><br>
+						<?php echo $video['desc']; ?><br>
+						<?php echo $video['timestamp']; ?><br>
+				</div>
+<?php
+	endforeach;
+endif; 
+?>
 			</div>
 	</div>
 </div>
