@@ -7,7 +7,7 @@ if(!isset($_SESSION['logged_in']))
 }
 require('../../inc/mysql_config.php');
 
-if(isset($_POST['to']) && isset($_POST['message']))
+if(isset($_POST['to'], $_POST['subject'], $_POST['message']))
 {
 	$to = mysql_real_escape_string($_POST['to']);
 	$subject = mysql_real_escape_string($_POST['subject']);

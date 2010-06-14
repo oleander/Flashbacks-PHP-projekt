@@ -28,6 +28,7 @@ SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
 CREATE TABLE IF NOT EXISTS `messages` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `recipient` text NOT NULL,
+  `subject` varchar(32) NOT NULL,
   `message` text NOT NULL,
   `from` int(11) NOT NULL,
   `unread` int(11) NOT NULL DEFAULT '1',
