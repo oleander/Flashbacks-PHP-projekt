@@ -102,7 +102,7 @@ $cfg = cfg() -> get_all();
 					</tr>
 <?php foreach($messages as $message): ?>
 					<tr>
-						<td><a href="read_message.php?id=<?php echo $message['id']; ?>"><?php echo $message['subject']; ?></a></td>
+						<td><a href="#" onclick="$('#showMessage').dialog('open'); $('#showMessage').load('inc/showmessage.php?id=<?php echo $message['id']; ?>'); return false;"><?php echo $message['subject']; ?></a></td>
 						<td><a href="profile.php?id=<?php echo $message['userID']; ?>"><?php echo $message['from']; ?></a></td>
 						<td><?php echo ($message['unread']) ? 'Ja' : 'Nej'; ?></td>
 					</tr>
@@ -111,6 +111,8 @@ $cfg = cfg() -> get_all();
 <?php else: ?>
 				Här var det tomt!
 <?php endif; ?>
+			</div>
+			<div id="showMessage" title="Meddelande">
 			</div>
 	</div>
 </div>

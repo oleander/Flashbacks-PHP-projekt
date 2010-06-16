@@ -55,3 +55,15 @@
 			icons: false,
 		});
 	});
+
+	$(function() {
+		$('#showMessage').dialog({
+			autoOpen: false,
+			show: 'fold',
+			hide: 'fold',
+			modal: 'true',
+			resizable: false,
+			draggable: false,
+			closeOnEscape: false
+		});
+	});
