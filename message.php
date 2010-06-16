@@ -31,15 +31,16 @@ if(isset($id))
 	}
 }
 
-$result = mysql_query('SELECT m.id, m.subject, m.unread, u.id AS userID, u.username FROM messages AS m LEFT JOIN users AS u ON m.from = u.id');
+//$result = mysql_query('SELECT m.id, m.subject, m.unread, u.id AS userID, u.username FROM messages AS m LEFT JOIN users AS u ON m.from = u.id');
+$result = mysql_query("SELECT m.id, m.subject, m.unread, u.id AS fromID, u.username AS fromName FROM messages AS m, users AS u WHERE m.from = u.id AND m.recipient = $_SESSION[userID]");
 $messages = array();
 $i = 0;
 while($row = mysql_fetch_array($result))
 {
 	$messages[$i]['id'] = $row['id'];
 	$messages[$i]['subject'] = htmlentities($row['subject']);
-	$messages[$i]['from'] = htmlentities($row['username']);
-	$messages[$i]['userID'] = $row['userID'];
+	$messages[$i]['from'] = htmlentities($row['fromName']);
+	$messages[$i]['userID'] = $row['fromID'];
 	$messages[$i]['unread'] = $row['unread'];
 	$i++;
 }
