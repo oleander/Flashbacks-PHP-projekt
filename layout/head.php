@@ -3,18 +3,25 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>  
 	<meta http-equiv="content-type" content="text/html; charset=utf-8"/>
-	<title><?php echo $title; ?></title>
+	<title><?php echo ($template->getTitle()) ? $template->getTitle() . ' - FB-Community' : 'FB-Community'; ?></title>
 	<link rel="alternate" type="application/rss+xml" href="scripts/php/update_feed.php" title="Flashback Community News Feed" />
 	<link rel="stylesheet" href="css/stil1.css" type="text/css" />
 	<link type="text/css" href="css/ui-lightness/jquery-ui-1.8.1.custom.css" rel="stylesheet" />
+<?php
+if(count($template->getCSS()) > 0)
+{
+	foreach($template->getCSS() as $addedCSS)
+		echo "\t<link rel=\"stylesheet\" href=\"css/".$addedCSS."\" type=\"text/css\" />" . PHP_EOL;
+}
+?>
 	<script type="text/javascript" src="scripts/js/jquery-1.4.2.min.js"></script>
 	<script type="text/javascript" src="scripts/js/jquery-ui-1.8.1.custom.min.js"></script>
 	<script type="text/javascript" src="scripts/js/javascript.js"></script>
-<?php 
-if(isset($javascripts))
+<?php
+if(count($template->getScript()) > 0)
 {
-	foreach($javascripts as $javascript)
-		echo "\t<script type=\"text/javascript\" src=\"scripts/js/".$javascript."\"></script>" . PHP_EOL;
+	foreach($template->getScript() as $addedJavascript)
+		echo "\t<script type=\"text/javascript\" src=\"scripts/js/".$addedJavascript."\"></script>" . PHP_EOL;
 }
 ?>
 </head>  
