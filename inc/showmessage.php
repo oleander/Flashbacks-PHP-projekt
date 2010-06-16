@@ -37,11 +37,15 @@ $result = mysql_query($query);
 // We should have a message - we print it
 if($row = mysql_fetch_array($result))
 {
+	$subject = htmlentities($row['subject'],  ENT_COMPAT, 'UTF-8');
+	$fromName = htmlentities($row['fromName'], ENT_COMPAT, 'UTF-8');
+	$message = htmlentities($row['message'],  ENT_COMPAT, 'UTF-8');
+
 	echo <<<EOF
-	<b>Ämne: </b>$row[subject]<br />
-	<b>Från: </b>$row[fromName]<br />
+	<b>Ämne: </b>$subject<br />
+	<b>Från: </b>$fromName<br />
 	<b>Meddelande:</b><br />
-	$row[message]
+	$message
 EOF;
 }
 else

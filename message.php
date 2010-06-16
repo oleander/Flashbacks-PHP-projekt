@@ -38,8 +38,8 @@ $i = 0;
 while($row = mysql_fetch_array($result))
 {
 	$messages[$i]['id'] = $row['id'];
-	$messages[$i]['subject'] = htmlentities($row['subject']);
-	$messages[$i]['from'] = htmlentities($row['fromName']);
+	$messages[$i]['subject'] = htmlentities($row['subject'], ENT_COMPAT, 'UTF-8');
+	$messages[$i]['from'] = htmlentities($row['fromName'], ENT_COMPAT, 'UTF-8');
 	$messages[$i]['userID'] = $row['fromID'];
 	$messages[$i]['unread'] = $row['unread'];
 	$i++;
