@@ -11,7 +11,7 @@ if(isset($_POST['to'], $_POST['subject'], $_POST['message']))
 {
 	$to = mysql_real_escape_string($_POST['to']);
 	$subject = mysql_real_escape_string($_POST['subject']);
-	$message = mysql_real_escape_string(nl2br($_POST['message']));
+	$message = mysql_real_escape_string($_POST['message']);
 	$result = mysql_query("SELECT id FROM users WHERE username = '". $to . "' LIMIT 0, 1");
 	if($row = mysql_fetch_array($result))
 	{

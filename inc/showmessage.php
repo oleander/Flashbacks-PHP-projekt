@@ -39,7 +39,7 @@ if($row = mysql_fetch_array($result))
 {
 	$subject = htmlentities($row['subject'],  ENT_COMPAT, 'UTF-8');
 	$fromName = htmlentities($row['fromName'], ENT_COMPAT, 'UTF-8');
-	$message = htmlentities($row['message'],  ENT_COMPAT, 'UTF-8');
+	$message = nl2br(htmlentities($row['message'],  ENT_COMPAT, 'UTF-8'));
 
 	echo <<<EOF
 	<b>Ämne: </b>$subject<br />
@@ -47,6 +47,10 @@ if($row = mysql_fetch_array($result))
 	<b>Meddelande:</b><br />
 	$message
 EOF;
+
+	// We've read the message. Mark it as such.
+	$query = "update messages set unread = 0 where id = $messageID";
+	mysql_query($query);
 }
 else
 {

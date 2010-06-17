@@ -32,9 +32,15 @@ if(isset($id))
 }
 
 //$result = mysql_query('SELECT m.id, m.subject, m.unread, u.id AS userID, u.username FROM messages AS m LEFT JOIN users AS u ON m.from = u.id');
-$result = mysql_query("SELECT m.id, m.subject, m.unread, u.id AS fromID, u.username AS fromName FROM messages AS m, users AS u WHERE m.from = u.id AND m.recipient = $_SESSION[userID]");
+$query = "SELECT m.id, m.subject, m.unread, u.id AS fromID, u.username AS fromName 
+	FROM messages AS m, users AS u
+	WHERE m.from = u.id AND m.recipient = $_SESSION[userID]
+	ORDER BY m.id DESC";
+$result = mysql_query($query);
+
 $messages = array();
 $i = 0;
+
 while($row = mysql_fetch_array($result))
 {
 	$messages[$i]['id'] = $row['id'];
