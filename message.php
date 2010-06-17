@@ -108,7 +108,7 @@ $cfg = cfg() -> get_all();
 					</tr>
 <?php foreach($messages as $message): ?>
 					<tr>
-						<td><a href="#" onclick="$('#showMessage').dialog('open'); $('#showMessage').load('inc/showmessage.php?id=<?php echo $message['id']; ?>'); return false;"><?php echo $message['subject']; ?></a></td>
+						<td><a href="#" onclick="$('#showMessage').load('scripts/php/show_message.php?id=<?php echo $message['id']; ?>'); $('#showMessage').dialog('open'); return false;"><?php echo $message['subject']; ?></a></td>
 						<td><a href="profile.php?id=<?php echo $message['userID']; ?>"><?php echo $message['from']; ?></a></td>
 						<td><?php echo ($message['unread']) ? 'Ja' : 'Nej'; ?></td>
 					</tr>

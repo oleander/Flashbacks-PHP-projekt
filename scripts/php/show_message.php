@@ -8,12 +8,12 @@
 session_start();
 if(!isset($_SESSION['logged_in']))
 {
-	header('location: index.php');
+	header('location: ../../index.php');
 	die();
 }
 
 // MySQL support so we can get message and user
-require_once('mysql_config.php');
+require_once('../../inc/mysql_config.php');
 
 // We have a message ID to fetch?
 if(isset($_GET['id']))
