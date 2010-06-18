@@ -26,7 +26,7 @@ $userID = $_SESSION['userID'];
 
 // Don't forget to search for our userID, we don't want
 // others messages - do we? ;)
-$query = "SELECT m.id, m.subject, m.message, u.username AS fromName 
+$query = "SELECT m.id, m.subject, m.message, m.from, u.username AS fromName 
 	FROM messages AS m, users AS u 
 	WHERE m.from = u.id
 	AND m.id = $messageID
@@ -40,12 +40,15 @@ if($row = mysql_fetch_array($result))
 	$subject = htmlentities($row['subject'],  ENT_COMPAT, 'UTF-8');
 	$fromName = htmlentities($row['fromName'], ENT_COMPAT, 'UTF-8');
 	$message = nl2br(htmlentities($row['message'],  ENT_COMPAT, 'UTF-8'));
+	$from = $row['from'];
 
 	echo <<<EOF
 	<b>Ämne: </b>$subject<br />
-	<b>Från: </b>$fromName<br />
+	<b>Från: </b><a href="profile.php?id=$from">$fromName</a><br /><br />
 	<b>Meddelande:</b><br />
 	$message
+	<br /><br />
+	<a href="message.php?to=$from"><b>Svara</b></a>
 EOF;
 
 	// We've read the message. Mark it as such.
