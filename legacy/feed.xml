@@ -1,6 +1,0 @@
-<?xml version='1.0' encoding='UTF-8'?>
-<rss version='2.0'>
-<channel>
-  <title>Flashback Community News Feed</title>
-  <link>http://localhost</link>  <description>Flashbacks egna community</description>  <item>    <title>Första nyheten</title>    <link>http://localhost</link>    <description>Detta är första nyheten.</description>  </item></channel>
-</rss>
