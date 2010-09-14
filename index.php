@@ -1,148 +1,118 @@
 <?php
-include("inc/validate.php");
-session_start();
-    /* Hantering av konfigurering */
-	
-	require("inc/config.php");
-    
-    $GLOBALS["cfg"] = new Config();
-    
-    function cfg() {
-        return $GLOBALS["cfg"];
-    }
-    
-    /* Konfigueringar */
-    cfg() -> set("titel", "FB-Community"); // En konfigurering 
-    
-    $cfg = cfg() -> get_all();
-    
-    /* Exempel på hur man kan hantera konfigueringar.
-        $min_cfg["name"] = "Flashbackarn";
-        $min_cfg["sex"] = "male";
-        $min_cfg["age"] = 12;
-        
-        foreach ($min_cfg as $name => $value) {
-            cfg() -> set($name, $value);
-        }
-    */
-?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">  
+/*
+|---------------------------------------------------------------
+| PHP ERROR REPORTING LEVEL
+|---------------------------------------------------------------
+|
+| By default CI runs with error reporting set to ALL.  For security
+| reasons you are encouraged to change this when your site goes live.
+| For more info visit:  http://www.php.net/error_reporting
+|
+*/
+	error_reporting(E_ALL);
 
-<head>  
-	<meta http-equiv="content-type" content="text/html; charset=utf-8"/>
-	<title><?php echo $cfg["titel"]; ?></title>
-	<link rel="alternate" type="application/rss+xml" href="scripts/php/update_feed.php" title="Flashback Community News Feed" />
-	<link rel="stylesheet" href="css/stil1.css" type="text/css" />
-	<link type="text/css" href="css/ui-lightness/jquery-ui-1.8.1.custom.css" rel="stylesheet" />
-	<script type="text/javascript" src="scripts/js/jquery-1.4.2.min.js"></script>
-	<script type="text/javascript" src="scripts/js/jquery-ui-1.8.1.custom.min.js"></script>
-	<script type="text/javascript" src="scripts/js/javascript.js"></script>
-</head>  
+/*
+|---------------------------------------------------------------
+| SYSTEM FOLDER NAME
+|---------------------------------------------------------------
+|
+| This variable must contain the name of your "system" folder.
+| Include the path if the folder is not in the same  directory
+| as this file.
+|
+| NO TRAILING SLASH!
+|
+*/
+	$system_folder = "system";
 
-<body>
-<div id="wrapper">
-	<div id="header">
-		<div id="menu">
-			<?php
-				if (isset($_SESSION['logged_in']))
-					include 'inc/menu.php';
-				else
-					echo "Logga in för att se menyn";
-			?>
-		</div>
-		<div id="meta">
-			<ul>
-				<?php
-				if (isset($_SESSION['logged_in']))
-					echo "<li><a href='scripts/php/logout.php'>Logga ut</a></li>";
-				else
-					echo "<li><a href='#' id='login'>Logga in</a></li>";
-				?>
-			</ul>
-		</div>
-		<!--<div id="time">
-			<?php include 'inc/time.php'; ?>
-		</div>-->
-	</div>
-	<div id="content">
-			<div id="loginDialog" title="Logga in">
-				<form action="scripts/php/login.php" method="post">
-					<label for="username">Användarnamn: </label><input type="text" name="username" id="username"/><br />
-					<label for="password">Lösenord: </label><input type="password" name="password" id="password"/><br />
-					<input type="submit" name="login_submit" value="Logga in"/>
-					<p>Har du inget konto? <a href="#" id="register">Registrera dig</a></p>
-				</form>
-			</div>
-			<div id="registerDialog" title="Registrera dig">
-				<form action="scripts/php/register.php" method="post">
-					<h5 style="display: inline; color: red;">Använd ej samma lösenord här som du har på andra ställen!</h5><br />
-					<label for="username">Användarnamn: </label><input type="text" name="username" id="username"/><br />
-					<label for="password">Lösenord (x2): </label><input type="password" name="password" id="password"/><br />
-					<input type="password" name="password_again" id="password_again" /><br />
-					<label for="email">E-post: </label><br /><input type="text" name="email" id="email" /><br />
-					<input type="submit" name="register_submit" value="Registrera"/>
-				</form>
-			</div>
-			<div id="intro">
-				<h2>Välkommen till Flashback Communitys</h2>
-				<p>Här kan du uppleva yttrandefriheten som finns på Flashback forum fast på en mera community-baserad plattform.</p>
-				<p>Du blir tilldelad en egen profil som du kan skräddarsy för att spegla din personlighet och åsikter.</p>
-				<p>Det finns även olika mötesplatser på sidan för att olika medlemmar ska kunna träffas och kommunicera med varandra.</p>
-				<h4 style="color: red;">OBS<br/>Ingenting du skriver här på sidan är skyddat från någon annans ögon då hela databasen är öppen så tänk på vad du skriver.</h4>
-<?php 
-// If we have register messages put them here for now
-// I'm not a designer. ;)
-// Should definately do something about looks
-if((isset($_GET['register'])) && ($_GET['register'] == 1))
+/*
+|---------------------------------------------------------------
+| APPLICATION FOLDER NAME
+|---------------------------------------------------------------
+|
+| If you want this front controller to use a different "application"
+| folder then the default one you can set its name here. The folder 
+| can also be renamed or relocated anywhere on your server.
+| For more info please see the user guide:
+| http://codeigniter.com/user_guide/general/managing_apps.html
+|
+|
+| NO TRAILING SLASH!
+|
+*/
+	$application_folder = "application";
+
+/*
+|===============================================================
+| END OF USER CONFIGURABLE SETTINGS
+|===============================================================
+*/
+
+
+/*
+|---------------------------------------------------------------
+| SET THE SERVER PATH
+|---------------------------------------------------------------
+|
+| Let's attempt to determine the full-server path to the "system"
+| folder in order to reduce the possibility of path problems.
+| Note: We only attempt this if the user hasn't specified a 
+| full server path.
+|
+*/
+if (strpos($system_folder, '/') === FALSE)
 {
-	echo "			<div id=\"messageBox\">\n";
-	
-	if((isset($_GET['error'])) && ($_GET['error'] > 0))
+	if (function_exists('realpath') AND @realpath(dirname(__FILE__)) !== FALSE)
 	{
-		// We had a register error
-		require_once("inc/error.php");
-
-		$error = new Error($_GET['error']);
-
-		echo "				<p><b>Misslyckad registrering:</b></p>\n";
-		echo "				<ul>\n";
-		foreach($error->getErrors() as $errorRow)
-		{
-			echo "					<li>".$errorRow."</li>\n";
-		}
-		echo "				</ul>\n";
+		$system_folder = realpath(dirname(__FILE__)).'/'.$system_folder;
 	}
-	else
-	{
-		// Everything is OK. Registration worked!
-		echo "				<p><b>Registreringen lyckades</b></p>\n";
-		echo "				<p>Du är nu registrerad och kan logga in uppe till höger.</p>\n";
-	}
-
-	echo "			</div>\n";
+}
+else
+{
+	// Swap directory separators to Unix style for consistency
+	$system_folder = str_replace("\\", "/", $system_folder); 
 }
 
-// Login failure messages
-if((isset($_GET['login'])) && ($_GET['login'] == 1) && 
-	isset($_GET['error']) && ($_GET['error'] > 0))
-{
-	echo "			<div id=\"messageBox\">\n";
-	
-	// Well we do allow for multiple possible login
-	// errors to be announced but we only say login failed
-	// anyway, so using a static message for now.
-	echo "				<p><b>Inloggningen misslyckades.</b></p>\n";
+/*
+|---------------------------------------------------------------
+| DEFINE APPLICATION CONSTANTS
+|---------------------------------------------------------------
+|
+| EXT		- The file extension.  Typically ".php"
+| SELF		- The name of THIS file (typically "index.php")
+| FCPATH	- The full server path to THIS file
+| BASEPATH	- The full server path to the "system" folder
+| APPPATH	- The full server path to the "application" folder
+|
+*/
+define('EXT', '.php');
+define('SELF', pathinfo(__FILE__, PATHINFO_BASENAME));
+define('FCPATH', str_replace(SELF, '', __FILE__));
+define('BASEPATH', $system_folder.'/');
 
-	echo "			</div>\n";
+if (is_dir($application_folder))
+{
+	define('APPPATH', $application_folder.'/');
 }
-?>
-			</div>
-			<div id="news">
-				<?php include 'scripts/php/get_news.php'; ?>
-			</div>
-	</div>
-</div>
-</body>
-</html>
+else
+{
+	if ($application_folder == '')
+	{
+		$application_folder = 'application';
+	}
+
+	define('APPPATH', BASEPATH.$application_folder.'/');
+}
+
+/*
+|---------------------------------------------------------------
+| LOAD THE FRONT CONTROLLER
+|---------------------------------------------------------------
+|
+| And away we go...
+|
+*/
+require_once BASEPATH.'codeigniter/CodeIgniter'.EXT;
+
+/* End of file index.php */
+/* Location: ./index.php */
