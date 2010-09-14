@@ -1,0 +1,14 @@
+Att göra:
+Done	*Kryptera lösenorden.
+Done	*"Profil"-sida
+	*Sätt för medlemmarna att kommunicera
+	*Pagination till news.php
+Done	*Göra så att man kommer att man kommer till Lars sida när man trycker på "Lars" på news.php
+        *PM-box
+        *Online status.
+        *Album med bilder
+
+Att fixa:
+Done *update_feed.php
+Done *Vettigt felmeddelande vid misslyckad inloggning.
+	*Snygga till messageBox på indexsidan
