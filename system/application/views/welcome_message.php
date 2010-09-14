@@ -55,6 +55,11 @@ code {
 
 <p>If you are exploring CodeIgniter for the very first time, you should start by reading the <a href="user_guide/">User Guide</a>.</p>
 
+<p>Ni som vill lära er CodeIgniter snabbt men grundläggande har här två video tutorials:<br><br>
+<a href="http://codeigniter.com/tutorials/watch/intro/">Hello World! Introduction to CodeIgniter</a><br>
+<a href="http://codeigniter.com/tutorials/watch/blog/">Create a Blog in 20 Minutes</a><br>
+/diggan
+</p>
 
 <p><br />Page rendered in {elapsed_time} seconds</p>
 
